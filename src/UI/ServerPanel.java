@@ -55,7 +55,7 @@ public class ServerPanel extends JPanel {
 					backendSpiel = null;
 					UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, 30)));
 					JLabel label = new JLabel(
-							"Server konnte nicht verbungen werden, bitte überprüfen ob der Server auf Ihren System gestartet ist.");
+							"Server konnte nicht verbunden werden, bitte überprüfen ob der Server auf Ihren System gestartet ist.");
 					label.setFont(new Font("Tahoma", Font.PLAIN, 30));
 					JOptionPane.showMessageDialog(null, label, "Fehler", JOptionPane.PLAIN_MESSAGE);
 				}
@@ -79,7 +79,7 @@ public class ServerPanel extends JPanel {
 					backendSpiel = null;
 					UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, 30)));
 					JLabel label = new JLabel(
-							"Server konnte nicht verbungen werden, bitte überprüfen Sie die Adresse.");
+							"Server konnte nicht verbunden werden, bitte überprüfen Sie die Adresse.");
 					label.setFont(new Font("Tahoma", Font.PLAIN, 30));
 					JOptionPane.showMessageDialog(null, label, "Fehler", JOptionPane.PLAIN_MESSAGE);
 				}

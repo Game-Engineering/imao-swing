@@ -24,6 +24,7 @@ public class SwingFE {
 	private ServerPanel serverPanel;
 	private StartPanel startPanel;
 	private Wirtschaft wirtschaftPanel;
+	private Medizin medizinPanel;
 	private boolean serverOK = false;
 	private static Gson gson = new Gson();
 	private JPanel LogPanel;
@@ -33,6 +34,7 @@ public class SwingFE {
 	private JMenu mainMenu;
 	private JMenuBar menuBar;
 	private JMenuItem neuesSpiel;
+	private static final int FONT_SIZE = 30;
 
 	/**
 	 * Launch the application.
@@ -79,15 +81,12 @@ public class SwingFE {
 					serverOK = true;
 				}
 				if (serverOK) {
-					UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, 30)));
-					JLabel label = new JLabel("Starte Spiel auf dem Server: " + serverPanel.getServeradresse() + ". ");
-					label.setFont(new Font("Tahoma", Font.PLAIN, 30));
-					JOptionPane.showMessageDialog(null, label, "Fehler", JOptionPane.PLAIN_MESSAGE);
 					replacePanel(startPanel);
 				} else {
-					UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, 30)));
+					UIManager.put("OptionPane.buttonFont",
+							new FontUIResource(new Font("Tahoma", Font.PLAIN, FONT_SIZE)));
 					JLabel label = new JLabel("Sie sind mit keinem Server verbuden.");
-					label.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					label.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 					JOptionPane.showMessageDialog(null, label, "Fehler", JOptionPane.PLAIN_MESSAGE);
 				}
 			}
@@ -104,10 +103,10 @@ public class SwingFE {
 		lblLogHeadLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblLogHeadLabel.setVerticalTextPosition(SwingConstants.TOP);
 		lblLogHeadLabel.setVerticalAlignment(SwingConstants.TOP);
-		lblLogHeadLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblLogHeadLabel.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		LogPanel.add(lblLogHeadLabel, "cell 0 0");
 
-		lblLog.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblLog.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		lblLog.setWrapStyleWord(true);
 		lblLog.setLineWrap(true);
 		lblLog.setEditable(false);
@@ -124,11 +123,11 @@ public class SwingFE {
 		frmImaoTestTool.getContentPane().add(menuBar, BorderLayout.NORTH);
 
 		mainMenu = new JMenu("Hauptmenü");
-		mainMenu.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		mainMenu.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		menuBar.add(mainMenu);
 
 		neuesSpiel = new JMenuItem("neues Spiel");
-		neuesSpiel.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		neuesSpiel.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		mainMenu.add(neuesSpiel);
 		neuesSpiel.addActionListener(new ActionListener() {
 
@@ -152,6 +151,7 @@ public class SwingFE {
 		erzeugeFelder();
 
 		wirtschaftPanel = new Wirtschaft(spiel);
+		medizinPanel = new Medizin(spiel);
 		startPanel = new StartPanel(spiel);
 
 		startPanel.getBtnStarteSpielArzt().addActionListener(new ActionListener() {
@@ -164,11 +164,14 @@ public class SwingFE {
 				if ("Fehler ".equals(temp.ueberschrift)) {
 					startPanel.getLblFehlerarzt().setText(temp.text);
 				} else {
+					String rundenString = spiel.backendSpiel.neueRundeArzt();
+					RundeArzt runde = gson.fromJson(get1(rundenString), RundeArzt.class);
 
-					spiel.backendSpiel.neueRundeArzt();
+					medizinPanel.getTextRundeInfo().setText(runde.toString());
+
 					startPanel.resetFields();
-					wirtschaftPanel.setText(getFormattedText(temp.text));
-					replacePanel(wirtschaftPanel);
+					medizinPanel.setText(temp.ueberschrift + "\n" + getFormattedText(temp.text));
+					replacePanel(medizinPanel);
 				}
 
 			}
@@ -232,6 +235,35 @@ public class SwingFE {
 			stringBuilder.append(delimiter);
 			stringBuilder.append(sextteil);
 			delimiter = ".\n";
+		}
+		text = stringBuilder.toString();
+		return text;
+	}
+
+	public String get1(String textInput) {
+		String textInput2 = get2(textInput);
+		List<String> textTokens = Arrays.asList(textInput2.split("patienten\":\""));
+		String text = "";
+		StringBuilder stringBuilder = new StringBuilder();
+		String delimiter = "";
+		for (String sextteil : textTokens) {
+			stringBuilder.append(delimiter);
+			stringBuilder.append(sextteil);
+			delimiter = "patienten\":";
+		}
+		text = stringBuilder.toString();
+		return text;
+	}
+
+	public String get2(String textInput) {
+		List<String> textTokens = Arrays.asList(textInput.split("]\""));
+		String text = "";
+		StringBuilder stringBuilder = new StringBuilder();
+		String delimiter = "";
+		for (String sextteil : textTokens) {
+			stringBuilder.append(delimiter);
+			stringBuilder.append(sextteil);
+			delimiter = "]";
 		}
 		text = stringBuilder.toString();
 		return text;
