@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/fherb/Desktop/HS/Programme/IMAO-Server-Test/jars/hk2-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/fherb/Desktop/HS/Programme/IMAO-Server-Test/jars/hk2-locator.jar"/>
+	<classpathentry kind="lib" path="C:/Users/fherb/Desktop/HS/Programme/IMAO-Server-Test/jars/hk2-utils.jar"/>
+	<classpathentry kind="lib" path="C:/Users/fherb/Desktop/HS/Programme/IMAO-Server-Test/jars/javax.inject.jar"/>
+	<classpathentry kind="lib" path="C:/Users/fherb/Desktop/HS/Programme/IMAO-Server-Test/jars/javax.ws.rs-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/fherb/Desktop/HS/Programme/IMAO-Server-Test/jars/jersey-client.jar"/>
+	<classpathentry kind="lib" path="C:/Users/fherb/Desktop/HS/Programme/IMAO-Server-Test/jars/jersey-common.jar"/>
+	<classpathentry kind="lib" path="C:/Users/fherb/Desktop/HS/Programme/IMAO-Server-Test/jars/jersey-guava.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_73">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/fherb/Desktop/HS/Programme/IMAO-Server-Test/jars/com.fasterxml.jackson.core.jar"/>
+	<classpathentry kind="lib" path="C:/Users/fherb/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.6.0/jackson-databind-2.6.0.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="jackson-databind-2.6.0.jar"/>
+			<attribute name="maven.groupId" value="com.fasterxml.jackson.core"/>
+			<attribute name="maven.artifactId" value="jackson-databind"/>
+			<attribute name="maven.version" value="2.6.0"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/fherb/Desktop/HS/Programme/IMAO-Server-Test/jars/gson-2.6.2.jar"/>
+	<classpathentry kind="lib" path="miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
