@@ -16,7 +16,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.plaf.FontUIResource;
 
 import Backend.BackendSpielStub;
-import java.awt.Color;
 import java.awt.Dimension;
 
 @SuppressWarnings("serial")

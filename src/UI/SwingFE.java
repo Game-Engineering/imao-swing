@@ -10,10 +10,8 @@ import javax.swing.plaf.FontUIResource;
 
 import com.google.gson.Gson;
 
-import Backend.*;
 import Frontend.*;
 import net.miginfocom.swing.MigLayout;
-import sun.security.jca.GetInstance;
 import javax.swing.border.LineBorder;
 
 public class SwingFE {

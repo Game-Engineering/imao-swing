@@ -25,6 +25,7 @@ import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
+@SuppressWarnings("serial")
 public class StartPanel extends JPanel {
 
 	private Spiel spiel;

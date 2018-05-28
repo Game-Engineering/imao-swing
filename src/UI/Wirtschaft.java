@@ -24,9 +24,7 @@ import javax.swing.JTextArea;
 import net.miginfocom.swing.MigLayout;
 import java.awt.Component;
 import javax.swing.JScrollPane;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Dimension;
-import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class Wirtschaft extends JPanel {
@@ -36,6 +34,7 @@ public class Wirtschaft extends JPanel {
 	private final JLabel lblRundeinfo = new JLabel(" ");
 	private JTextArea txtrText = new JTextArea(" ", 20, 25);
 	private static Gson gson = new Gson();
+	private static final int FONT_SIZE = 30;
 
 	/**
 	 * Create the panel.
@@ -43,7 +42,7 @@ public class Wirtschaft extends JPanel {
 	public Wirtschaft(Spiel spiel) {
 
 		setPreferredSize(new Dimension(2000, 930));
-		setLayout(new MigLayout("", "[339px][1229.00px][409.00px]", "[53px][749.00px][]"));
+		setLayout(new MigLayout("", "[340px][1230.00px][410.00px]", "[53px][749.00px][]"));
 
 		JLabel lblWirtschaft = new JLabel("Wirtschaft");
 		lblWirtschaft.setHorizontalAlignment(SwingConstants.CENTER);
@@ -66,38 +65,38 @@ public class Wirtschaft extends JPanel {
 				"[45px][45px][45px][45px][45px][45px][45px][45px][45px][45px][45px][45px][45px][45px]"));
 
 		JButton btnNeueRunde = new JButton("neue Runde");
-		btnNeueRunde.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnNeueRunde.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		buttonPanel.add(btnNeueRunde, "cell 0 0,alignx left,aligny top");
 		InfoPanel.setLayout(new MigLayout("", "[305.00px]", "[37px][234.00px][37px][123.00px][37px][129.00px]"));
 
 		JLabel lblRunde = new JLabel("Runde:");
 		lblRunde.setVerticalAlignment(SwingConstants.TOP);
 		lblRunde.setHorizontalAlignment(SwingConstants.LEFT);
-		lblRunde.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblRunde.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		InfoPanel.add(lblRunde, "cell 0 0,alignx left,aligny top");
 
 		lblRundeinfo.setHorizontalAlignment(SwingConstants.LEFT);
 		lblRundeinfo.setVerticalAlignment(SwingConstants.TOP);
-		lblRundeinfo.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblRundeinfo.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		InfoPanel.add(lblRundeinfo, "cell 0 1,grow");
 
 		JLabel lblManager = new JLabel("Manager:");
 		InfoPanel.add(lblManager, "cell 0 2,alignx left,aligny top");
-		lblManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblManager.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 
 		InfoPanel.add(lblManagerinfo, "cell 0 3,alignx left,aligny top");
 		lblManagerinfo.setHorizontalAlignment(SwingConstants.LEFT);
 		lblManagerinfo.setVerticalAlignment(SwingConstants.TOP);
-		lblManagerinfo.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblManagerinfo.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 
 		JLabel lblArzt = new JLabel("Arzt:");
 		InfoPanel.add(lblArzt, "cell 0 4,alignx left,aligny top");
-		lblArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblArzt.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 
 		InfoPanel.add(lblArztinfo, "cell 0 5,alignx left,aligny top");
 		lblArztinfo.setVerticalAlignment(SwingConstants.TOP);
 		lblArztinfo.setHorizontalAlignment(SwingConstants.LEFT);
-		lblArztinfo.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblArztinfo.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_TextPanel = new GroupLayout(TextPanel);
@@ -115,12 +114,12 @@ public class Wirtschaft extends JPanel {
 		txtrText.setLineWrap(true);
 		txtrText.setFocusable(false);
 		txtrText.setOpaque(false);
-		txtrText.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		txtrText.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 
 		TextPanel.setLayout(gl_TextPanel);
 
 		JButton btnBudgetbreicht = new JButton("Budgetbreicht");
-		btnBudgetbreicht.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnBudgetbreicht.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		buttonPanel.add(btnBudgetbreicht, "cell 0 1,alignx left,aligny top");
 		btnBudgetbreicht.addActionListener(new ActionListener() {
 
@@ -132,7 +131,7 @@ public class Wirtschaft extends JPanel {
 		});
 
 		JButton btnArztbreicht = new JButton("Arztbreicht");
-		btnArztbreicht.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnArztbreicht.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		buttonPanel.add(btnArztbreicht, "cell 0 2,alignx left,aligny top");
 		btnArztbreicht.addActionListener(new ActionListener() {
 
@@ -144,7 +143,7 @@ public class Wirtschaft extends JPanel {
 		});
 
 		JButton btnHaltePressekonferenz = new JButton("halte Pressekonferenz");
-		btnHaltePressekonferenz.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnHaltePressekonferenz.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		buttonPanel.add(btnHaltePressekonferenz, "cell 0 3,alignx left,aligny top");
 		btnHaltePressekonferenz.addActionListener(new ActionListener() {
 
@@ -156,7 +155,7 @@ public class Wirtschaft extends JPanel {
 		});
 
 		btnInterviewpartner = new JButton("Interviewpartner");
-		btnInterviewpartner.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnInterviewpartner.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		buttonPanel.add(btnInterviewpartner, "cell 0 4,alignx left,aligny top");
 		btnInterviewpartner.addActionListener(new ActionListener() {
 
@@ -170,7 +169,7 @@ public class Wirtschaft extends JPanel {
 		});
 
 		JButton btnKaufeRntgen = new JButton("kaufe R\u00F6ntgen");
-		btnKaufeRntgen.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnKaufeRntgen.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		buttonPanel.add(btnKaufeRntgen, "cell 0 6,alignx left,aligny top");
 		btnKaufeRntgen.setVisible(false);
 
@@ -186,7 +185,7 @@ public class Wirtschaft extends JPanel {
 		});
 
 		JButton btnKaufeUltraschall = new JButton("kaufe Ultraschall");
-		btnKaufeUltraschall.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnKaufeUltraschall.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		buttonPanel.add(btnKaufeUltraschall, "cell 0 7,alignx left,aligny top");
 		btnKaufeUltraschall.setVisible(false);
 
@@ -202,7 +201,7 @@ public class Wirtschaft extends JPanel {
 		});
 
 		JButton btnffneKatalog = new JButton("\u00F6ffne Katalog");
-		btnffneKatalog.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnffneKatalog.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		buttonPanel.add(btnffneKatalog, "cell 0 5,alignx left,aligny top");
 
 		btnffneKatalog.addActionListener(new ActionListener() {
@@ -219,7 +218,7 @@ public class Wirtschaft extends JPanel {
 		});
 
 		JButton btnPosteingang = new JButton("Posteingang");
-		btnPosteingang.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnPosteingang.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		buttonPanel.add(btnPosteingang, "cell 0 8,alignx left,aligny top");
 		btnPosteingang.addActionListener(new ActionListener() {
 
@@ -233,7 +232,7 @@ public class Wirtschaft extends JPanel {
 		});
 
 		JButton btnLob = new JButton("Lob");
-		btnLob.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnLob.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		buttonPanel.add(btnLob, "cell 0 10,alignx left,aligny top");
 		btnLob.setVisible(false);
 
@@ -243,13 +242,13 @@ public class Wirtschaft extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String mailString = spiel.backendSpiel.sendeMail(Mails.LOB.name());
 				Mail mail = gson.fromJson(mailString, Mail.class);
-				UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, 30)));
+				UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, FONT_SIZE)));
 				txtrText.setText(mail.toString());
 			}
 		});
 
 		JButton btnAbmahnung = new JButton("Abmahnung");
-		btnAbmahnung.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnAbmahnung.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		buttonPanel.add(btnAbmahnung, "cell 0 11,alignx left,aligny top");
 		btnAbmahnung.setVisible(false);
 		btnAbmahnung.addActionListener(new ActionListener() {
@@ -258,13 +257,13 @@ public class Wirtschaft extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String mailString = spiel.backendSpiel.sendeMail(Mails.ABMAHNUNG.name());
 				Mail mail = gson.fromJson(mailString, Mail.class);
-				UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, 30)));
+				UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, FONT_SIZE)));
 				txtrText.setText(mail.toString());
 			}
 		});
 
 		JButton btnGert = new JButton("Ger\u00E4t");
-		btnGert.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnGert.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		buttonPanel.add(btnGert, "cell 0 12,alignx left,aligny top");
 		btnGert.setVisible(false);
 		btnGert.addActionListener(new ActionListener() {
@@ -273,13 +272,13 @@ public class Wirtschaft extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String mailString = spiel.backendSpiel.sendeMail(Mails.GERAET_GEKAUFT.name());
 				Mail mail = gson.fromJson(mailString, Mail.class);
-				UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, 30)));
+				UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, FONT_SIZE)));
 				txtrText.setText(mail.toString());
 			}
 		});
 
 		JButton btnDefault = new JButton("Default");
-		btnDefault.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnDefault.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		buttonPanel.add(btnDefault, "cell 0 13,alignx left,aligny top");
 		btnDefault.setVisible(false);
 
@@ -289,7 +288,7 @@ public class Wirtschaft extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String mailString = spiel.backendSpiel.sendeMail(Mails.DEFAULT_MAIL.name());
 				Mail mail = gson.fromJson(mailString, Mail.class);
-				UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, 30)));
+				UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, FONT_SIZE)));
 				txtrText.setText(mail.toString());
 			}
 		});
