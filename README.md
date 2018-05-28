@@ -4,7 +4,6 @@
 
 
 ## IMAO
-=======
 IMAO (International Medical Aid Organization) project at the Mannheim University of Applied Sciences in the lecture GAE
 
 Der Code und die Commit history ist einfacher zu lesen wenn du dich an folgende Hinweise hälst.
