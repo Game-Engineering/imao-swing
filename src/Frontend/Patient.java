@@ -7,7 +7,15 @@ public class Patient {
 	@Override
 	public String toString() {
 
-		return "erscheinung: " + erscheinung + " ID: " + ID + "\n";
+		return "Erscheinung: " + erscheinung + " ID: " + ID + "\n";
+	}
+
+	public int getErscheinung() {
+		return erscheinung;
+	}
+
+	public int getID() {
+		return ID;
 	}
 
 }

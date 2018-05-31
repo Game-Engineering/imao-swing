@@ -10,12 +10,8 @@ public class RundeArzt {
 
 	@Override
 	public String toString() {
-		String erg = "";
-		for (Patient patient : patienten) {
-			erg += patient.toString();
-		}
-		return "runde: " + runde + "\nnachricht: " + nachricht + "\nbudget: " + budget + "\nruf: " + ruf
-				+ "\nwartendePatienten: " + wartendePatienten + "\npatienten:\n" + erg;
+		return "<html>Runde: " + runde + "<br>Nachricht: " + nachricht + "<br>Budget: " + budget + "<br>Ruf: " + ruf
+				+ "<br>Patienten in dieser Runde: " + wartendePatienten + "</html>";
 	}
 
 }

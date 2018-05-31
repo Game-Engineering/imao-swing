@@ -2,6 +2,7 @@ package UI;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -166,8 +167,8 @@ public class SwingFE {
 				} else {
 					String rundenString = spiel.backendSpiel.neueRundeArzt();
 					RundeArzt runde = gson.fromJson(get1(rundenString), RundeArzt.class);
-
-					medizinPanel.getTextRundeInfo().setText(runde.toString());
+					medizinPanel.setWartendePatienten(runde.patienten);
+					medizinPanel.setRundeInfo(runde);
 
 					startPanel.resetFields();
 					medizinPanel.setText(temp.ueberschrift + "\n" + getFormattedText(temp.text));
@@ -209,6 +210,8 @@ public class SwingFE {
 
 	private void erzeugeFelder() {
 		frmImaoTestTool = new JFrame();
+		frmImaoTestTool
+				.setIconImage(Toolkit.getDefaultToolkit().getImage(SwingFE.class.getResource("/Bilder/logo-imao.jpg")));
 		frmImaoTestTool.setTitle("IMAO Test Tool");
 		frmImaoTestTool.setBounds(0, 0, 2000, 1400);
 		frmImaoTestTool.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -224,6 +227,8 @@ public class SwingFE {
 		PanelContainer.add(activePanel);
 		frmImaoTestTool.invalidate();
 		frmImaoTestTool.validate();
+		medizinPanel.repaint();
+		wirtschaftPanel.repaint();
 	}
 
 	public String getFormattedText(String textInput) {

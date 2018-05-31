@@ -24,13 +24,10 @@ public class BackendSpielStub implements iBackendSpiel {
 
 	private String getXmlvonRest(String anfrage) {
 		try {
-
-			System.out.println("CLIENT ANFRAGE: " + url + anfrage);
 			SwingFE.addLog("CLIENT ANFRAGE: " + url + anfrage);
 
 			String s = client.target(url + anfrage).request().accept("application/json").get(String.class);
 
-			System.out.println("SERVER ANTWORT: " + s);
 			SwingFE.addLog("SERVER ANTWORT: " + s);
 
 			return s;
@@ -96,8 +93,18 @@ public class BackendSpielStub implements iBackendSpiel {
 	}
 
 	@Override
+	public String getRoentgen(int PatientID) {
+		return getXmlvonRest("medizin/getRoentgen/" + PatientID + "/");
+	}
+
+	@Override
 	public String getUntersuchungsmethoden() {
 		return getXmlvonRest("medizin/getUntersuchungsmethoden/");
+	}
+
+	@Override
+	public String getAlleKrankheiten() {
+		return getXmlvonRest("medizin/getAlleKrankheiten/");
 	}
 
 	@Override
@@ -112,7 +119,7 @@ public class BackendSpielStub implements iBackendSpiel {
 
 	@Override
 	public String getPatatient() {
-		return getXmlvonRest("medizin/getPatatient/");
+		return getXmlvonRest("medizin/getPatient/");
 	}
 
 	@Override

@@ -17,8 +17,8 @@ public class Interviewpartner {
 	@Override
 	public String toString() {
 
-		return "ID: " + id + " \nname: " + name + " \nmaxAnsehen: " + maxAnsehen + " \nschwierigkeit:" + schwierigkeit
-				+ "\n";
+		return "<html>name: " + name + " <br>maxAnsehen: " + maxAnsehen + " <br>schwierigkeit:" + schwierigkeit
+				+ "<html>";
 	}
 
 }

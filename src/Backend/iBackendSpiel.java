@@ -25,7 +25,11 @@ public interface iBackendSpiel {
 
 	public String getBlutbild(int PatientID);
 
+	public String getRoentgen(int PatientID);
+
 	public String getUntersuchungsmethoden();
+
+	public String getAlleKrankheiten();
 
 	public String diagnose(int PatientID, int krankheitID);
 
