@@ -19,7 +19,7 @@ public class RundeManager {
 	@Override
 	public String toString() {
 
-		return "<html>runde: " + runde + "<br>nachricht: " + nachricht + "<br>budget: " + budget + "<br>aufgabe: "
+		return "<html>Runde: " + runde + "<br>Nachricht: " + nachricht + "<br>Budget: " + budget + "<br>Aufgabe: "
 				+ aufgabe + "</html>";
 	}
 

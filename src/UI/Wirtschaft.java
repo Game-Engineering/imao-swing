@@ -70,13 +70,13 @@ public class Wirtschaft extends JPanel {
 
 	private final JButton btnZurueck = new JButton("Zur\u00FCck");
 	private final JButton btnAnwerben = new JButton("anwerben");
-	private final JButton btnNeueRunde = new JButton("neue Runde");
-	private final JButton btnBudgetbreicht = new JButton("Budgetbreicht");
-	private final JButton btnArztbreicht = new JButton("Arztbreicht");
-	private final JButton btnHaltePressekonferenz = new JButton("halte Pressekonferenz");
-	private final JButton btnKaufeRntgen = new JButton("kaufe R\u00F6ntgen");
-	private final JButton btnKaufeUltraschall = new JButton("kaufe Ultraschall");
-	private final JButton btnffneKatalog = new JButton("\u00F6ffne Katalog");
+	private final JButton btnNeueRunde = new JButton("Neue Runde");
+	private final JButton btnBudgetbreicht = new JButton("Budgetbericht");
+	private final JButton btnArztbreicht = new JButton("Arztbericht");
+	private final JButton btnHaltePressekonferenz = new JButton("Pressekonferenz halten");
+	private final JButton btnKaufeRntgen = new JButton("R\u00F6ntgen kaufen");
+	private final JButton btnKaufeUltraschall = new JButton("Ultraschall kaufen");
+	private final JButton btnffneKatalog = new JButton("Katalog \u00F6ffnen");
 	private final JButton btnPosteingang = new JButton("Posteingang");
 	private final JButton btnLob = new JButton("Lob");
 	private final JButton btnAbmahnung = new JButton("Abmahnung");

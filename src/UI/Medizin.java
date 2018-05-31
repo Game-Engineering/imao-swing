@@ -48,13 +48,13 @@ public class Medizin extends JPanel {
 	private final JTextArea textArea = new JTextArea(" ", 20, 25);
 	private final JTextArea textWartendePatienten = new JTextArea(" ", 1, 1);
 	private final JLabel lblMedizin = new JLabel("Medizin");
-	private final JButton btnNeueRunde = new JButton("neue Runde");
+	private final JButton btnNeueRunde = new JButton("Neue Runde");
 	private final JButton btnUntersuchungsmethoden = new JButton("Untersuchungsmethoden");
 	private final JButton btnAnamnese = new JButton("Anamnese");
 	private final JButton btnUltraschall = new JButton("Ultraschall");
 	private final JButton btnRoentgen = new JButton("R\u00F6ntgen");
 	private final JButton btnBlutbild = new JButton("Blutbild");
-	private final JButton btnPatientHereinbitten = new JButton("Patient hereinbitten");
+	private final JButton btnPatientHereinbitten = new JButton("N\u00E4chster Patient");
 
 	private Image background = null;
 
@@ -93,7 +93,7 @@ public class Medizin extends JPanel {
 	private final JButton btnFrage3 = new JButton("Frage4");
 
 	private final JLabel lblRundeinfo = new JLabel(" ");
-	private final JLabel lblPatientInZelt = new JLabel("Patient in Zelt:");
+	private final JLabel lblPatientInZelt = new JLabel("Patient im Zelt:");
 	private final JLabel lblPatientinfo = new JLabel(" ");
 	private final JLabel lblWartendepatienten = new JLabel("WartendePatienten:");
 	private final JPanel BlutbildPanel = new JPanel();
