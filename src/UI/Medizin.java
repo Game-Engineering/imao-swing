@@ -136,19 +136,19 @@ public class Medizin extends JPanel {
 	 * Create the panel.
 	 */
 	public Medizin(Spiel spiel) {
-		setMaximumSize(new Dimension(32767, 930));
+		setMaximumSize(new Dimension(2200, 870));
 		this.spiel = spiel;
-		setPreferredSize(new Dimension(2000, 1225));
+		setPreferredSize(new Dimension(2000, 930));
 		setLayout(new MigLayout("", "[340][1225][568.00]", "[][]"));
 		panelContainer.setLayout(new CardLayout(0, 0));
 		add(lblMedizin, "cell 0 0 3 1,growx");
-		add(buttonPanel, "cell 0 1,grow");
-		add(infoPanel, "cell 2 1,grow");
+		add(buttonPanel, "cell 0 1,growy");
+		add(infoPanel, "cell 2 1");
 
 		setLayout();
 
 		JPanel RundeInfpPane = new JPanel();
-		infoPanel.add(RundeInfpPane, "cell 0 5,grow");
+		infoPanel.add(RundeInfpPane, "cell 0 5");
 
 		JScrollPane infoPane = new JScrollPane(textWartendePatienten, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -166,9 +166,9 @@ public class Medizin extends JPanel {
 		RundeInfpPane.setLayout(gl_RundeInfpPane);
 
 		activPanel = panel;
-		panelContainer.setMaximumSize(new Dimension(1225, 830));
+		panelContainer.setMaximumSize(new Dimension(1080, 770));
 
-		add(panelContainer, "cell 1 1,growx");
+		add(panelContainer, "cell 1 1");
 		dialogPanel.setMaximumSize(new Dimension(1225, 830));
 
 		panelContainer.add(dialogPanel, dialog);
@@ -220,12 +220,13 @@ public class Medizin extends JPanel {
 		format();
 		addFields();
 		addActionListeners();
+		lblErfolg.setMaximumSize(new Dimension(1080, 770));
 		lblErfolg.setIcon(new ImageIcon((new ImageIcon(this.getClass().getResource("/Bilder/Erfolg.png")).getImage())
-				.getScaledInstance(1225, 830, Image.SCALE_SMOOTH)));
+				.getScaledInstance(1080, 730, Image.SCALE_SMOOTH)));
 
 		lblKeinErfolg
 				.setIcon(new ImageIcon((new ImageIcon(this.getClass().getResource("/Bilder/keinErfolg.png")).getImage())
-						.getScaledInstance(1225, 830, Image.SCALE_SMOOTH)));
+						.getScaledInstance(1080, 770, Image.SCALE_SMOOTH)));
 		((CardLayout) panelContainer.getLayout()).show(panelContainer, "Infos");
 
 	}
@@ -324,29 +325,29 @@ public class Medizin extends JPanel {
 
 		dialogPanel.add(lblAnamnese, "cell 0 0,growx");
 
-		dialogPanel.add(lblAntwort, "cell 0 2,grow");
+		dialogPanel.add(lblAntwort, "cell 0 2,growx");
 		dialogPanel.add(btnFrage0, "cell 0 3,growx");
 		dialogPanel.add(btnFrage1, "cell 0 4,growx");
 		dialogPanel.add(btnFrage2, "cell 0 5,growx");
 		dialogPanel.add(btnFrage3, "cell 0 6,growx");
 
-		infoPanel.add(lblRunde, "cell 0 0,growx");
-		infoPanel.add(lblRundeinfo, "cell 0 1,grow");
+		infoPanel.add(lblRunde, "cell 0 0");
+		infoPanel.add(lblRundeinfo, "cell 0 1");
 		infoPanel.add(lblPatientInZelt, "cell 0 2");
-		infoPanel.add(lblPatientinfo, "cell 0 3,growy");
+		infoPanel.add(lblPatientinfo, "cell 0 3");
 		infoPanel.add(lblWartendepatienten, "cell 0 4");
 
 		BlutbildPanel.setLayout(new MigLayout("", "[123px][924.00px]", "[45px][782.00px]"));
 		BlutbildPanel.add(btnBZuruek, "cell 0 0,alignx center,aligny center");
 		BlutbildPanel.add(lblBlutbild, "cell 1 0,alignx center,aligny center");
-		BlutbildPanel.add(lblBlutwerte, "cell 1 1,grow");
+		BlutbildPanel.add(lblBlutwerte, "cell 1 1,growy");
 
 		roentgenPanel.add(btnRZurueck, "cell 0 0");
-		roentgenPanel.add(lblRntgen, "cell 1 0,growx");
+		roentgenPanel.add(lblRntgen, "cell 1 0");
 
 		roentgenPanel.add(lblRorntgenbild, "cell 1 1,grow");
 
-		diagnosePanel.add(lblDiagnose, "cell 1 0,growx");
+		diagnosePanel.add(lblDiagnose, "cell 1 0");
 		diagnosePanel.add(btnDZurueck, "cell 0 0");
 		diagnosePanel.add(btnDiagnose0, "cell 1 2");
 		diagnosePanel.add(btnDiagnose1, "cell 1 3");
@@ -359,7 +360,7 @@ public class Medizin extends JPanel {
 		diagnosePanel.add(btnDiagnose8, "cell 1 10");
 		diagnosePanel.add(btnDiagnose9, "cell 1 11");
 
-		UltraschallPanel.add(lblUltraschall, "cell 1 0,growx");
+		UltraschallPanel.add(lblUltraschall, "cell 1 0");
 		UltraschallPanel.add(btnUZurueck, "cell 0 0");
 
 		UltraschallPanel.add(lblUltraschallbild, "cell 1 1,grow");
@@ -463,18 +464,22 @@ public class Medizin extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				anamneseLauft = true;
-				if (inZelt != null) {
-					String json = spiel.backendSpiel.beginneAnamnese(inZelt.getID());
-					Anamnese anamnese = gson.fromJson(json, Anamnese.class);
-					lblAntwort.setText(anamnese.getAntwort());
-					btnFrage0.setText(anamnese.getFragen()[0]);
-					btnFrage0.setVisible(true);
-					btnFrage1.setText(anamnese.getFragen()[1]);
-					btnFrage1.setVisible(true);
-					btnFrage2.setText(anamnese.getFragen()[2]);
-					btnFrage2.setVisible(true);
+				if (anamneseLauft) {
 					((CardLayout) panelContainer.getLayout()).show(panelContainer, dialog);
+				} else {
+					anamneseLauft = true;
+					if (inZelt != null) {
+						String json = spiel.backendSpiel.beginneAnamnese(inZelt.getID());
+						Anamnese anamnese = gson.fromJson(json, Anamnese.class);
+						lblAntwort.setText(anamnese.getAntwort());
+						btnFrage0.setText(anamnese.getFragen()[0]);
+						btnFrage0.setVisible(true);
+						btnFrage1.setText(anamnese.getFragen()[1]);
+						btnFrage1.setVisible(true);
+						btnFrage2.setText(anamnese.getFragen()[2]);
+						btnFrage2.setVisible(true);
+						((CardLayout) panelContainer.getLayout()).show(panelContainer, dialog);
+					}
 				}
 			}
 		});

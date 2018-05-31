@@ -90,9 +90,9 @@ public class Wirtschaft extends JPanel {
 	private final JLabel lblWirtschaft = new JLabel("Wirtschaft");
 	private final JLabel lblInterviewPartner = new JLabel("Interview Partner");
 
-	private final JLabel lblPartner = new JLabel("Partner1");
-	private final JLabel lblPartner_1 = new JLabel("Partner2");
-	private final JLabel lblPartner_2 = new JLabel("Partner3");
+	private final JLabel lblPartner = new JLabel(" ");
+	private final JLabel lblPartner_1 = new JLabel(" ");
+	private final JLabel lblPartner_2 = new JLabel(" ");
 	private final JLabel lblInterview = new JLabel("Interview");
 	private final JLabel lblFrage = new JLabel("Frage");
 
@@ -166,6 +166,8 @@ public class Wirtschaft extends JPanel {
 		btnAbmahnung.setVisible(false);
 		btnGert.setVisible(false);
 		btnDefault.setVisible(false);
+		btnBeginneInterview_1.setVisible(false);
+		btnBeginneInterview_2.setVisible(false);
 
 	}
 
@@ -388,10 +390,12 @@ public class Wirtschaft extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String json = spiel.backendSpiel.getInterviewPartner();
+				System.out.println(json);
 				Partner partnerListe = gson.fromJson(json, Partner.class);
-				lblPartner.setText(partnerListe.partnerListe.get(0).toString());
-				lblPartner_1.setText(partnerListe.partnerListe.get(1).toString());
-				lblPartner_2.setText(partnerListe.partnerListe.get(2).toString());
+				System.out.println(partnerListe.interviewPartner);
+				lblPartner.setText(partnerListe.interviewPartner.get(0).toString());
+				// lblPartner_1.setText(partnerListe.partnerListe.get(1).toString());
+				// lblPartner_2.setText(partnerListe.partnerListe.get(2).toString());
 				((CardLayout) panelContainer.getLayout()).show(panelContainer, InterviewPartnerPanelName);
 			}
 		});
