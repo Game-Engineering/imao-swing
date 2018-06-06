@@ -21,4 +21,8 @@ public class Interviewpartner {
 				+ "<html>";
 	}
 
+	public int getId() {
+		return id;
+	}
+
 }

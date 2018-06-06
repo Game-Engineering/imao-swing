@@ -33,6 +33,8 @@ public class BackendSpielStub implements iBackendSpiel {
 			return s;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			SwingFE.addLog("SERVER FEHLER: " + e.getMessage());
+
 			return "";
 		}
 	}
@@ -70,6 +72,11 @@ public class BackendSpielStub implements iBackendSpiel {
 	@Override
 	public String neueRundeArzt() {
 		return getXmlvonRest("medizin/neueRunde");
+	}
+
+	@Override
+	public String getManagerDaten() {
+		return getXmlvonRest("wirtschaft/getManagerDaten/");
 	}
 
 	@Override
@@ -154,7 +161,12 @@ public class BackendSpielStub implements iBackendSpiel {
 
 	@Override
 	public String haltePressekonferenz() {
-		return getXmlvonRest("wirtschaft/haltePressekonferenz/");
+		return getXmlvonRest("wirtschaft/startePressekonferenz/");
+	}
+
+	@Override
+	public String haltePressekonferenz(int ID) {
+		return getXmlvonRest("wirtschaft/pressekonferenz/" + ID + "/");
 	}
 
 	@Override
@@ -183,13 +195,8 @@ public class BackendSpielStub implements iBackendSpiel {
 	}
 
 	@Override
-	public String getAktuelleSponsoren() {
-		return getXmlvonRest("wirtschaft/getAktuelleSponsoren/");
-	}
-
-	@Override
-	public String getMoeglicheSponsoren() {
-		return getXmlvonRest("wirtschaft/getMoeglicheSponsoren/");
+	public String getSponsoren() {
+		return getXmlvonRest("wirtschaft/getAlleSponsoren/");
 	}
 
 	@Override

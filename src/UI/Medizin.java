@@ -131,6 +131,24 @@ public class Medizin extends JPanel {
 	private final JLabel lblUltraschallbild = new JLabel(" ");
 	private final JLabel lblRorntgenbild = new JLabel(" ");
 	private final JLabel lblAnamnese = new JLabel("Anamnese");
+	private final JPanel mailPanel = new JPanel();
+	private final JLabel lblPosteingang = new JLabel("Posteingang");
+	private final JButton btnNewButton = new JButton("New button");
+	private final JButton btnNewButton_1 = new JButton("New button");
+	private final JButton btnNewButton_2 = new JButton("New button");
+	private final JButton btnNewButton_3 = new JButton("New button");
+	private final JButton btnNewButton_4 = new JButton("New button");
+	private final JButton btnNewButton_5 = new JButton("New button");
+	private final JButton btnNewButton_6 = new JButton("New button");
+	private final JButton btnNewButton_7 = new JButton("New button");
+	private final JButton btnNewButton_8 = new JButton("New button");
+	private final JButton btnNewButton_9 = new JButton("New button");
+	private final JButton btnNewButton_10 = new JButton("New button");
+	private final JButton btnNewButton_11 = new JButton("New button");
+	private final JButton btnNewButton_12 = new JButton("New button");
+	private final JButton btnNewButton_13 = new JButton("New button");
+	private final JLabel lblMailInhalt = new JLabel("MailInhalt");
+	private final JButton btnPosteingang = new JButton("Posteingang");
 
 	/**
 	 * Create the panel.
@@ -229,19 +247,22 @@ public class Medizin extends JPanel {
 						.getScaledInstance(1080, 770, Image.SCALE_SMOOTH)));
 		((CardLayout) panelContainer.getLayout()).show(panelContainer, "Infos");
 
+		panelContainer.add(mailPanel, "name_435578306997333");
+
 	}
 
 	private void setLayout() {
-		buttonPanel.setLayout(new MigLayout("", "[]", "[][][][][][][][]"));
+		buttonPanel.setLayout(new MigLayout("", "[]", "[12.00][][][][][][][][][]"));
 		infoPanel.setLayout(new MigLayout("", "[386.00]", "[][206.00][36.00][205.00][41.00][252.00]"));
 
-		dialogPanel.setLayout(new MigLayout("", "[1225]", "[24.00][450][][][][][]"));
+		dialogPanel.setLayout(new MigLayout("", "[1225]", "[24.00][500][][][][][]"));
 		panel.setLayout(new MigLayout("", "[960][265]", "[830]"));
 		roentgenPanel.setLayout(new MigLayout("", "[123][1102]", "[][772.00]"));
 		diagnosePanel.setLayout(new MigLayout("", "[123][1102]", "[][][][][][][][][][][][]"));
 		UltraschallPanel.setLayout(new MigLayout("", "[123][1102]", "[47.00][783.00]"));
 		keinErfolgPanel.setLayout(new MigLayout("", "[][1225]", "[][830]"));
 		erfolgPanel.setLayout(new MigLayout("", "[][1225]", "[][830]"));
+		mailPanel.setLayout(new MigLayout("", "[114px][874.00]", "[][26px][][][][][][][][][][][][][][][]"));
 	}
 
 	private void format() {
@@ -308,18 +329,39 @@ public class Medizin extends JPanel {
 
 		btnEZurueck.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnKZurueck.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+
+		btnPosteingang.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblPosteingang.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblMailInhalt.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnNewButton_4.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnNewButton_5.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnNewButton_6.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnNewButton_7.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnNewButton_8.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnNewButton_9.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnNewButton_10.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnNewButton_11.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnNewButton_12.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnNewButton_13.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 	}
 
 	private void addFields() {
-		buttonPanel.add(btnNeueRunde, "cell 0 0");
-		buttonPanel.add(btnPatientHereinbitten, "cell 0 1");
+		buttonPanel.add(btnNeueRunde, "cell 0 1,growx");
 
-		buttonPanel.add(btnDiagnose, "cell 0 2");
-		buttonPanel.add(btnUntersuchungsmethoden, "cell 0 3");
-		buttonPanel.add(btnAnamnese, "cell 0 4");
-		buttonPanel.add(btnUltraschall, "cell 0 5");
-		buttonPanel.add(btnRoentgen, "cell 0 6");
-		buttonPanel.add(btnBlutbild, "cell 0 7");
+		buttonPanel.add(btnPosteingang, "cell 0 2,growx");
+		buttonPanel.add(btnPatientHereinbitten, "cell 0 3,growx");
+
+		buttonPanel.add(btnDiagnose, "cell 0 4,growx");
+		buttonPanel.add(btnUntersuchungsmethoden, "cell 0 5,growx");
+		buttonPanel.add(btnAnamnese, "cell 0 6,growx");
+		buttonPanel.add(btnUltraschall, "cell 0 7,growx");
+		buttonPanel.add(btnRoentgen, "cell 0 8,growx");
+		buttonPanel.add(btnBlutbild, "cell 0 9,growx");
+		lblAnamnese.setForeground(Color.LIGHT_GRAY);
 		lblAnamnese.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAnamnese.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
@@ -370,6 +412,26 @@ public class Medizin extends JPanel {
 
 		keinErfolgPanel.add(btnKZurueck, "cell 0 0");
 		keinErfolgPanel.add(lblKeinErfolg, "cell 1 1");
+
+		mailPanel.add(lblPosteingang, "cell 0 1 2 1,growx,aligny top");
+
+		mailPanel.add(btnNewButton, "cell 0 2");
+		lblMailInhalt.setVerticalAlignment(SwingConstants.TOP);
+
+		mailPanel.add(lblMailInhalt, "cell 1 2 1 14,grow");
+		mailPanel.add(btnNewButton_1, "cell 0 3");
+		mailPanel.add(btnNewButton_2, "cell 0 4");
+		mailPanel.add(btnNewButton_3, "cell 0 5");
+		mailPanel.add(btnNewButton_4, "cell 0 6");
+		mailPanel.add(btnNewButton_5, "cell 0 7");
+		mailPanel.add(btnNewButton_6, "cell 0 8");
+		mailPanel.add(btnNewButton_7, "cell 0 9");
+		mailPanel.add(btnNewButton_8, "cell 0 10");
+		mailPanel.add(btnNewButton_9, "cell 0 11");
+		mailPanel.add(btnNewButton_10, "cell 0 12");
+		mailPanel.add(btnNewButton_11, "cell 0 13");
+		mailPanel.add(btnNewButton_12, "cell 0 14");
+		mailPanel.add(btnNewButton_13, "cell 0 15");
 	}
 
 	private void addActionListeners() {
@@ -410,7 +472,10 @@ public class Medizin extends JPanel {
 					background = new ImageIcon(
 							this.getClass().getResource("/Bilder/Patient" + inZelt.getErscheinungID() + ".png"))
 									.getImage();
-					lblPatientBild.setIcon(new ImageIcon(background.getScaledInstance(lblPatientBild.getWidth(),
+					Image profilbild = new ImageIcon(
+							this.getClass().getResource("/Bilder/PatientProfil" + inZelt.getErscheinungID() + ".png"))
+									.getImage();
+					lblPatientBild.setIcon(new ImageIcon(profilbild.getScaledInstance(lblPatientBild.getWidth(),
 							lblPatientBild.getHeight(), Image.SCALE_SMOOTH)));
 					btnDiagnose.setVisible(true);
 					textArea.setText(inZelt.toPlainString());
@@ -684,23 +749,16 @@ public class Medizin extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				diagnoseZuruek();
+				((CardLayout) panelContainer.getLayout()).show(panelContainer, infos);
 			}
 		});
 		btnKZurueck.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				diagnoseZuruek();
+				((CardLayout) panelContainer.getLayout()).show(panelContainer, infos);
 			}
 		});
-
-	}
-
-	private void diagnoseZuruek() {
-		textArea.setText(" ");
-		lblPatientBild.setIcon(null);
-		((CardLayout) panelContainer.getLayout()).show(panelContainer, infos);
 
 	}
 
@@ -726,11 +784,15 @@ public class Medizin extends JPanel {
 		DiagnoseErgebniss ergrbniss = gson.fromJson(json, DiagnoseErgebniss.class);
 		if ("erfolgreich".equals(ergrbniss.getNachricht().toLowerCase())) {
 			((CardLayout) panelContainer.getLayout()).show(panelContainer, erfolg);
+			lblPatientInZelt.setText("Der Patient hat das Zelt verlassen.");
 		} else {
 			((CardLayout) panelContainer.getLayout()).show(panelContainer, keinErfolg);
+			lblPatientInZelt.setText("Der Patient ist gestorben.");
 		}
 		inZelt = null;
-		lblPatientInZelt.setText("Der Patient hat das Zelt verlassen");
+		lblPatientBild.setIcon(null);
+		textArea.setText(" ");
+		btnDiagnose.setVisible(false);
 	}
 
 	public JTextArea getTextRundeInfo() {
@@ -843,5 +905,15 @@ public class Medizin extends JPanel {
 		} else {
 			btnFrage2.setVisible(false);
 		}
+	}
+
+	public void reset() {
+		((CardLayout) panelContainer.getLayout()).show(panelContainer, infos);
+		btnDiagnose.setVisible(false);
+		btnAnamnese.setVisible(false);
+		btnBlutbild.setVisible(false);
+		btnUltraschall.setVisible(false);
+		btnRoentgen.setVisible(false);
+		lblPatientBild.setIcon(null);
 	}
 }

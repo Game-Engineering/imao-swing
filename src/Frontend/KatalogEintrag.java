@@ -20,8 +20,8 @@ public class KatalogEintrag {
 	@Override
 	public String toString() {
 		return "name: " + name + "\nbehandlungsKosten: " + behandlungsKosten + "\nanschaffungsKosten: "
-				+ anschaffungsKosten + "\nunterhaltsKosten: " + unterhaltsKosten + "\nfreigeschaltet: "
-				+ freigeschaltet;
+				+ anschaffungsKosten + "\nunterhaltsKosten: " + unterhaltsKosten + "\nfreigeschaltet: " + freigeschaltet
+				+ "\n";
 	}
 
 }

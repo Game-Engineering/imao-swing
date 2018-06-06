@@ -24,6 +24,8 @@ import javax.swing.UIManager;
 import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class StartPanel extends JPanel {
@@ -45,8 +47,8 @@ public class StartPanel extends JPanel {
 	private static Gson gson = new Gson();
 	private JLabel lblArztinfo;
 	private JLabel lblManagerinfo;
-	private JLabel lblFehlermanager;
-	private JLabel lblFehlerarzt;
+	private JLabel lblFehler;
+	private JPanel panel;
 
 	/**
 	 * Create the panel.
@@ -59,107 +61,99 @@ public class StartPanel extends JPanel {
 
 		lblHauptmen = new JLabel("Hauptmen\u00FC");
 		lblHauptmen.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		setLayout(new MigLayout("", "[600][400][400][600]", "[22.00px][255.00][80.00][35.00]"));
+		add(lblHauptmen, "cell 0 0 4 1,alignx center,aligny top");
 
-		btnErzeugeArzt = new JButton("erzeuge Arzt");
-		btnErzeugeArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		panel = new JPanel();
+		add(panel, "cell 1 1 2 1,growx,aligny top");
+		panel.setLayout(new GridLayout(7, 2, 0, 0));
 
-		btnErzeugeManager = new JButton("erzeuge Manager");
-		btnErzeugeManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		JLabel lblVornameArzt = new JLabel("Vorname:");
+		panel.add(lblVornameArzt);
+		lblVornameArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
-		btnStarteSpielArzt = new JButton("starte Spiel Arzt");
-		btnStarteSpielArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
-
-		btnStarteSpielManager = new JButton("starte Spiel Manager");
-		btnStarteSpielManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblVornameManager = new JLabel("Vorname:");
+		panel.add(lblVornameManager);
+		lblVornameManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
 		txtVornameArzt = new JTextField();
+		panel.add(txtVornameArzt);
 		txtVornameArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		txtVornameArzt.setColumns(10);
 
-		txtNachnameArzt = new JTextField();
-		txtNachnameArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		txtNachnameArzt.setColumns(10);
-
-		tglbtnGeschlechtArzt = new JToggleButton("männlich");
-		tglbtnGeschlechtArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		tglbtnGeschlechtArzt.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent ev) {
-				if (ev.getStateChange() == ItemEvent.SELECTED) {
-					tglbtnGeschlechtArzt.setText("weiblich");
-				} else if (ev.getStateChange() == ItemEvent.DESELECTED) {
-					tglbtnGeschlechtArzt.setText("männlich");
-				}
-			}
-		});
-
-		JLabel lblVornameArzt = new JLabel("Vorname:");
-		lblVornameArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
-
-		JLabel lblNachnameArzt = new JLabel("Nachname:");
-		lblNachnameArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
-
-		lblVornameManager = new JLabel("Vorname:");
-		lblVornameManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
-
 		txtVornameManager = new JTextField();
+		panel.add(txtVornameManager);
 		txtVornameManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		txtVornameManager.setColumns(10);
 
+		JLabel lblNachnameArzt = new JLabel("Nachname:");
+		panel.add(lblNachnameArzt);
+		lblNachnameArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
+
 		lblNachnameManager = new JLabel("Nachname:");
+		panel.add(lblNachnameManager);
 		lblNachnameManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
+		txtNachnameArzt = new JTextField();
+		panel.add(txtNachnameArzt);
+		txtNachnameArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		txtNachnameArzt.setColumns(10);
+
 		txtNachnameManager = new JTextField();
+		panel.add(txtNachnameManager);
 		txtNachnameManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		txtNachnameManager.setColumns(10);
 
+		tglbtnGeschlechtArzt = new JToggleButton("männlich");
+		panel.add(tglbtnGeschlechtArzt);
+		tglbtnGeschlechtArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
+
 		tglbtnGeschlechtManager = new JToggleButton("m\u00E4nnlich");
+		panel.add(tglbtnGeschlechtManager);
 		tglbtnGeschlechtManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		tglbtnGeschlechtManager.addItemListener(new ItemListener() {
+
+		btnErzeugeArzt = new JButton("erzeuge Arzt");
+		panel.add(btnErzeugeArzt);
+		btnErzeugeArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
+
+		btnErzeugeManager = new JButton("erzeuge Manager");
+		panel.add(btnErzeugeManager);
+		btnErzeugeManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
+
+		btnErzeugeManager.addActionListener(new ActionListener() {
+
 			@Override
-			public void itemStateChanged(ItemEvent ev) {
-				if (ev.getStateChange() == ItemEvent.SELECTED) {
-					tglbtnGeschlechtManager.setText("weiblich");
-				} else if (ev.getStateChange() == ItemEvent.DESELECTED) {
-					tglbtnGeschlechtManager.setText("männlich");
+			public void actionPerformed(ActionEvent e) {
+				String geschlecht = "";
+				if (tglbtnGeschlechtManager.isSelected()) {
+					geschlecht = "weiblich";
+				} else {
+					geschlecht = "maennlich";
 				}
+				String managerString = spiel.backendSpiel.erzeugeManager(txtVornameManager.getText(),
+						txtNachnameManager.getText(), geschlecht);
+				Manager temp = gson.fromJson(managerString, Manager.class);
+				spiel.manager = temp;
+				if (spiel.manager != null) {
+					lblManagerinfo.setText(
+							"<html>" + spiel.manager.getName() + "<br>" + spiel.manager.getGeschlecht() + "</html>");
+				} else {
+					UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, 30)));
+					JLabel label = new JLabel("Bitte Tragen Sie einen Vornamen und einen Nachnamen ein.");
+					label.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					JOptionPane.showMessageDialog(null, label, "Fehler", JOptionPane.PLAIN_MESSAGE);
+				}
+
 			}
 		});
 
-		lblArztinfo = new JLabel(" ");
-		lblArztinfo.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnStarteSpielArzt = new JButton("starte Spiel Arzt");
+		panel.add(btnStarteSpielArzt);
+		btnStarteSpielArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
-		lblManagerinfo = new JLabel(" ");
-		lblManagerinfo.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		setLayout(new MigLayout("", "[680][320px][320px][680]",
-				"[37px][][37px][43px][37px][43px][54.00px][54.00px][45px][131px][]"));
-		add(lblNachnameArzt, "cell 1 4,alignx left,aligny top");
-		add(tglbtnGeschlechtArzt, "cell 1 6,alignx left,aligny top");
-		add(btnErzeugeArzt, "cell 1 7,alignx left,aligny top");
-		add(txtVornameArzt, "cell 1 3,alignx left,aligny top");
-		add(lblVornameArzt, "cell 1 2,alignx left,aligny top");
-		add(btnStarteSpielArzt, "cell 1 8,alignx left,aligny top");
-		add(lblArztinfo, "cell 1 9,grow");
-		add(txtNachnameArzt, "cell 1 5,alignx left,aligny top");
-		add(lblHauptmen, "cell 0 0 4 1,alignx center,aligny top");
-		add(lblManagerinfo, "cell 2 9,grow");
-		add(txtVornameManager, "cell 2 3,alignx left,aligny top");
-		add(lblVornameManager, "cell 2 2,alignx left,aligny top");
-		add(lblNachnameManager, "cell 2 4,alignx left,aligny top");
-		add(txtNachnameManager, "cell 2 5,alignx left,aligny top");
-		add(tglbtnGeschlechtManager, "cell 2 6,alignx left,aligny top");
-		add(btnErzeugeManager, "cell 2 7,alignx left,aligny top");
-		add(btnStarteSpielManager, "cell 2 8,alignx left,aligny top");
-
-		lblFehlerarzt = new JLabel(" ");
-		lblFehlerarzt.setForeground(Color.RED);
-		lblFehlerarzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		add(lblFehlerarzt, "cell 1 10");
-
-		lblFehlermanager = new JLabel(" ");
-		lblFehlermanager.setForeground(Color.RED);
-		lblFehlermanager.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		add(lblFehlermanager, "cell 2 10");
+		btnStarteSpielManager = new JButton("starte Spiel Manager");
+		panel.add(btnStarteSpielManager);
+		btnStarteSpielManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
 		btnErzeugeArzt.addActionListener(new ActionListener() {
 
@@ -188,33 +182,42 @@ public class StartPanel extends JPanel {
 				}
 			}
 		});
-
-		btnErzeugeManager.addActionListener(new ActionListener() {
-
+		tglbtnGeschlechtManager.addItemListener(new ItemListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				String geschlecht = "";
-				if (tglbtnGeschlechtManager.isSelected()) {
-					geschlecht = "weiblich";
-				} else {
-					geschlecht = "maennlich";
+			public void itemStateChanged(ItemEvent ev) {
+				if (ev.getStateChange() == ItemEvent.SELECTED) {
+					tglbtnGeschlechtManager.setText("weiblich");
+				} else if (ev.getStateChange() == ItemEvent.DESELECTED) {
+					tglbtnGeschlechtManager.setText("männlich");
 				}
-				String managerString = spiel.backendSpiel.erzeugeManager(txtVornameManager.getText(),
-						txtNachnameManager.getText(), geschlecht);
-				Manager temp = gson.fromJson(managerString, Manager.class);
-				spiel.manager = temp;
-				if (spiel.manager != null) {
-					lblManagerinfo.setText(
-							"<html>" + spiel.manager.getName() + "<br>" + spiel.manager.getGeschlecht() + "</html>");
-				} else {
-					UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, 30)));
-					JLabel label = new JLabel("Bitte Tragen Sie einen Vornamen und einen Nachnamen ein.");
-					label.setFont(new Font("Tahoma", Font.PLAIN, 30));
-					JOptionPane.showMessageDialog(null, label, "Fehler", JOptionPane.PLAIN_MESSAGE);
-				}
-
 			}
 		});
+		tglbtnGeschlechtArzt.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent ev) {
+				if (ev.getStateChange() == ItemEvent.SELECTED) {
+					tglbtnGeschlechtArzt.setText("weiblich");
+				} else if (ev.getStateChange() == ItemEvent.DESELECTED) {
+					tglbtnGeschlechtArzt.setText("männlich");
+				}
+			}
+		});
+
+		lblArztinfo = new JLabel(" ");
+		lblArztinfo.setVerticalAlignment(SwingConstants.TOP);
+		add(lblArztinfo, "cell 1 2,grow");
+		lblArztinfo.setFont(new Font("Tahoma", Font.PLAIN, 30));
+
+		lblManagerinfo = new JLabel(" ");
+		lblManagerinfo.setVerticalAlignment(SwingConstants.TOP);
+		add(lblManagerinfo, "cell 2 2,grow");
+		lblManagerinfo.setFont(new Font("Tahoma", Font.PLAIN, 30));
+
+		lblFehler = new JLabel(" ");
+		lblFehler.setHorizontalAlignment(SwingConstants.CENTER);
+		add(lblFehler, "cell 0 3 4 1,growx");
+		lblFehler.setForeground(Color.RED);
+		lblFehler.setFont(new Font("Tahoma", Font.PLAIN, 30));
 	}
 
 	public String getFormattedText(String textInput) {
@@ -232,12 +235,11 @@ public class StartPanel extends JPanel {
 	}
 
 	public void resetFields() {
-		lblFehlerarzt.setText(" ");
 		txtVornameArzt.setText("");
 		txtNachnameArzt.setText("");
 		lblArztinfo.setText(" ");
 		tglbtnGeschlechtArzt.setSelected(false);
-		lblFehlermanager.setText(" ");
+		lblFehler.setText(" ");
 		txtVornameManager.setText("");
 		txtNachnameManager.setText("");
 		lblManagerinfo.setText(" ");
@@ -252,12 +254,8 @@ public class StartPanel extends JPanel {
 		return btnStarteSpielManager;
 	}
 
-	public JLabel getLblFehlermanager() {
-		return lblFehlermanager;
-	}
-
-	public JLabel getLblFehlerarzt() {
-		return lblFehlerarzt;
+	public JLabel getLblFehler() {
+		return lblFehler;
 	}
 
 }

@@ -17,6 +17,8 @@ public interface iBackendSpiel {
 
 	public String neueRundeArzt();
 
+	public String getManagerDaten();
+
 	public String frageAnamnese(int PatientID, int frage);
 
 	public String beginneAnamnese(int PatientID);
@@ -53,6 +55,8 @@ public interface iBackendSpiel {
 
 	public String haltePressekonferenz();
 
+	public String haltePressekonferenz(int ID);
+
 	public String getBudgetbreicht();
 
 	public String getArztbreicht();
@@ -63,9 +67,7 @@ public interface iBackendSpiel {
 
 	public String sendeMail(String mailID);
 
-	public String getAktuelleSponsoren();
-
-	public String getMoeglicheSponsoren();
+	public String getSponsoren();
 
 	public String werbeSponsorAn(int sponsorID);
 

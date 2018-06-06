@@ -36,6 +36,11 @@ public class SwingFE {
 	private JMenuBar menuBar;
 	private JMenuItem neuesSpiel;
 	private static final int FONT_SIZE = 30;
+	private JMenu ansichtMenu;
+	private JMenuItem mntmMedizin;
+	private JMenuItem mntmWirtschaft;
+	private boolean medizinGestartet;
+	private boolean wirtschaftGestartet;
 
 	/**
 	 * Launch the application.
@@ -82,6 +87,7 @@ public class SwingFE {
 					serverOK = true;
 				}
 				if (serverOK) {
+					spiel.backendSpiel.neuesSpiel();
 					replacePanel(startPanel);
 				} else {
 					UIManager.put("OptionPane.buttonFont",
@@ -136,6 +142,8 @@ public class SwingFE {
 			public void actionPerformed(ActionEvent e) {
 				if (spiel.backendSpiel != null) {
 					spiel.backendSpiel.neuesSpiel();
+					wirtschaftPanel.reset();
+					medizinPanel.reset();
 					replacePanel(startPanel);
 				} else {
 					System.out.println("Kein Spiel");
@@ -143,6 +151,85 @@ public class SwingFE {
 
 			}
 		});
+
+		ansichtMenu = new JMenu("Ansicht");
+		menuBar.add(ansichtMenu);
+
+		mntmMedizin = new JMenuItem("Medizin");
+		mntmMedizin.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		mntmMedizin.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (medizinGestartet) {
+					replacePanel(medizinPanel);
+				} else {
+					String antwort = spiel.backendSpiel.startArzt();
+					Wilkommen temp = gson.fromJson(antwort, Wilkommen.class);
+
+					if ("Fehler ".equals(temp.ueberschrift)) {
+						startPanel.getLblFehler().setText(temp.text);
+					} else {
+						medizinGestartet = true;
+						String rundenString = spiel.backendSpiel.neueRundeArzt();
+						RundeArzt runde = gson.fromJson(get1(rundenString), RundeArzt.class);
+						medizinPanel.setWartendePatienten(runde.patienten);
+						medizinPanel.setRundeInfo(runde);
+
+						startPanel.resetFields();
+						medizinPanel.setText(temp.ueberschrift + "\n" + getFormattedText(temp.text));
+						replacePanel(medizinPanel);
+					}
+				}
+
+			}
+		});
+		ansichtMenu.add(mntmMedizin);
+		ansichtMenu.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+
+		mntmWirtschaft = new JMenuItem("Wirtschaft");
+		mntmWirtschaft.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		mntmWirtschaft.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (wirtschaftGestartet) {
+					replacePanel(wirtschaftPanel);
+				} else {
+					String antwort = spiel.backendSpiel.startManager();
+					Wilkommen temp = gson.fromJson(antwort, Wilkommen.class);
+
+					if ("Fehler ".equals(temp.ueberschrift)) {
+						startPanel.getLblFehler().setText(temp.text);
+
+					} else {
+						wirtschaftGestartet = true;
+						String rundenString = spiel.backendSpiel.neueRundeManager();
+						RundeManager runde = gson.fromJson(rundenString, RundeManager.class);
+
+						if (spiel.arzt == null) {
+							String json = spiel.backendSpiel.getArztDaten();
+							spiel.arzt = gson.fromJson(json, Arzt.class);
+						}
+						if (spiel.manager == null) {
+							String json = spiel.backendSpiel.getManagerDaten();
+							spiel.manager = gson.fromJson(json, Manager.class);
+						}
+						wirtschaftPanel.getLblRunde().setText(runde.toString());
+						wirtschaftPanel.getLblArztinfo().setText(
+								"<html>" + spiel.arzt.getName() + "<br>" + spiel.arzt.getGeschlecht() + "</html>");
+						wirtschaftPanel.getLblManagerinfo().setText("<html>" + spiel.manager.getName() + "<br>"
+								+ spiel.manager.getGeschlecht() + "</html>");
+						startPanel.resetFields();
+						wirtschaftPanel.setText(temp.ueberschrift + "\n" + getFormattedText(temp.text));
+						replacePanel(wirtschaftPanel);
+					}
+				}
+
+			}
+		});
+		ansichtMenu.add(mntmWirtschaft);
+		ansichtMenu.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 	}
 
 	/**
@@ -163,8 +250,9 @@ public class SwingFE {
 				Wilkommen temp = gson.fromJson(antwort, Wilkommen.class);
 
 				if ("Fehler ".equals(temp.ueberschrift)) {
-					startPanel.getLblFehlerarzt().setText(temp.text);
+					startPanel.getLblFehler().setText(temp.text);
 				} else {
+					medizinGestartet = true;
 					String rundenString = spiel.backendSpiel.neueRundeArzt();
 					RundeArzt runde = gson.fromJson(get1(rundenString), RundeArzt.class);
 					medizinPanel.setWartendePatienten(runde.patienten);
@@ -172,6 +260,7 @@ public class SwingFE {
 
 					startPanel.resetFields();
 					medizinPanel.setText(temp.ueberschrift + "\n" + getFormattedText(temp.text));
+					System.out.println(getFormattedText(temp.text));
 					replacePanel(medizinPanel);
 				}
 
@@ -185,9 +274,10 @@ public class SwingFE {
 				Wilkommen temp = gson.fromJson(antwort, Wilkommen.class);
 
 				if ("Fehler ".equals(temp.ueberschrift)) {
-					startPanel.getLblFehlermanager().setText(temp.text);
+					startPanel.getLblFehler().setText(temp.text);
 
 				} else {
+					wirtschaftGestartet = true;
 					String rundenString = spiel.backendSpiel.neueRundeManager();
 					RundeManager runde = gson.fromJson(rundenString, RundeManager.class);
 
@@ -202,6 +292,7 @@ public class SwingFE {
 							"<html>" + spiel.manager.getName() + "<br>" + spiel.manager.getGeschlecht() + "</html>");
 					startPanel.resetFields();
 					wirtschaftPanel.setText(temp.ueberschrift + "\n" + getFormattedText(temp.text));
+
 					replacePanel(wirtschaftPanel);
 				}
 			}

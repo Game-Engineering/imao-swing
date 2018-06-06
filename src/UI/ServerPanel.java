@@ -1,6 +1,7 @@
 package UI;
 
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,11 +21,12 @@ import java.awt.Dimension;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import javax.swing.BoxLayout;
 
 @SuppressWarnings("serial")
 public class ServerPanel extends JPanel {
 
-	private static final String LOCAL = "localhost:8080/";
+	private static final String LOCAL = "localhost:8080";
 	private static final String PREFIX = "http://";
 	private JLabel lblHead;
 	private JLabel lblServeradresse;
@@ -35,38 +37,53 @@ public class ServerPanel extends JPanel {
 	private JButton btnStart;
 	private String serveradresse;
 	private JLabel lblFehler;
+	private JPanel panel;
+	private JLabel label;
+	private JLabel label_1;
+	private JLabel label_2;
 
 	public ServerPanel() {
 		super();
 		setPreferredSize(new Dimension(2000, 930));
+		setLayout(new MigLayout("", "[600][800][600]", "[37px][49.00][176.00][35.00px][39.00][37px][]"));
 
 		lblHead = new JLabel("Bitte geben Sie die Adresse des Servers auf dem Sie Spielen m\u00F6chten ein.");
 		lblHead.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHead.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		add(lblHead, "cell 0 0 3 1,growx,aligny top");
+
+		panel = new JPanel();
+		add(panel, "cell 1 2,growx,aligny top");
+		panel.setLayout(new GridLayout(4, 2, 0, 0));
+
+		btnLokal = new JButton("Lokalhost");
+		panel.add(btnLokal);
+		btnLokal.setFont(new Font("Tahoma", Font.PLAIN, 30));
+
+		label = new JLabel("");
+		panel.add(label);
 
 		txtAdresse = new JTextField();
+		panel.add(txtAdresse);
 		txtAdresse.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		txtAdresse.setColumns(10);
-		setLayout(new MigLayout("", "[][650][350][10][240][750]", "[37px][49.00][45px][45px][39.00][37px][]"));
-
-		btnLokal = new JButton("Lokal");
-		btnLokal.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		btnLokal.setVisible(false);
-		btnLokal.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				serveradresse = LOCAL;
-				lblServeradresse.setText(" ");
-				verbindeServer(serveradresse);
-
-			}
-		});
-		add(btnLokal, "cell 4 2,alignx left,aligny top");
-		add(txtAdresse, "cell 2 3,growx,aligny center");
 
 		btnServer = new JButton("verbinden");
+		panel.add(btnServer);
 		btnServer.setFont(new Font("Tahoma", Font.PLAIN, 30));
+
+		label_1 = new JLabel("");
+		panel.add(label_1);
+		lblServeradresse = new JLabel(" ");
+		panel.add(lblServeradresse);
+		lblServeradresse.setFont(new Font("Tahoma", Font.PLAIN, 30));
+
+		label_2 = new JLabel(" ");
+		panel.add(label_2);
+
+		btnStart = new JButton("Start");
+		panel.add(btnStart);
+		btnStart.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		btnServer.addActionListener(new ActionListener() {
 
 			@Override
@@ -76,27 +93,30 @@ public class ServerPanel extends JPanel {
 				verbindeServer(serveradresse);
 			}
 		});
-		add(btnServer, "cell 4 3,alignx left,aligny top");
-		lblServeradresse = new JLabel(" ");
-		lblServeradresse.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		add(lblServeradresse, "cell 4 4 2 1,growx,aligny top");
+		// btnLokal.setVisible(false);
+		btnLokal.addActionListener(new ActionListener() {
 
-		btnStart = new JButton("Start");
-		btnStart.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		add(btnStart, "cell 4 5,alignx left,aligny top");
-		add(lblHead, "cell 0 0 6 1,growx,aligny top");
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// serveradresse = LOCAL;
+				// lblServeradresse.setText(" ");
+				// verbindeServer(serveradresse);
+				txtAdresse.setText(LOCAL);
+			}
+		});
 
 		lblFehler = new JLabel(" ");
 		lblFehler.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFehler.setForeground(Color.RED);
 		lblFehler.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		add(lblFehler, "cell 1 6 5 1,growx");
+		add(lblFehler, "cell 1 3,growx");
 	}
 
 	private void verbindeServer(String adresse) {
 		backendSpiel = new BackendSpielStub(PREFIX + adresse);
 		if (backendSpiel.test().equals("{OK}")) {
 			lblServeradresse.setText(PREFIX + adresse);
+			lblFehler.setText("");
 
 		} else {
 			backendSpiel = null;

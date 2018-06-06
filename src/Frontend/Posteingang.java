@@ -3,7 +3,7 @@ package Frontend;
 import java.util.List;
 
 public class Posteingang {
-	List<Mail> mailliste;
+	private List<Mail> mailliste;
 
 	public Posteingang() {
 		// TODO Auto-generated constructor stub
@@ -17,4 +17,9 @@ public class Posteingang {
 		}
 		return erg;
 	}
+
+	public List<Mail> getMailliste() {
+		return mailliste;
+	}
+
 }
