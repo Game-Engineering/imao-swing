@@ -56,7 +56,7 @@ public class ServerPanel extends JPanel {
 		add(panel, "cell 1 2,growx,aligny top");
 		panel.setLayout(new GridLayout(4, 2, 0, 0));
 
-		btnLokal = new JButton("Lokalhost");
+		btnLokal = new JButton("localhost");
 		panel.add(btnLokal);
 		btnLokal.setFont(new Font("Tahoma", Font.PLAIN, 30));
 

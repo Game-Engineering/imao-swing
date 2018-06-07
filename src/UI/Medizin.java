@@ -100,7 +100,6 @@ public class Medizin extends JPanel {
 	private final JPanel UltraschallPanel = new JPanel();
 	private final JButton btnBZuruek = new JButton("Zur\u00FCck");
 	private final JLabel lblBlutbild = new JLabel("Blutbild");
-	private final JLabel lblBlutwerte = new JLabel(" ");
 	private final JLabel lblPatientBild = new JLabel(" ");
 	private final JButton btnDiagnose = new JButton("Diagnose");
 	private final JPanel diagnosePanel = new JPanel();
@@ -149,6 +148,50 @@ public class Medizin extends JPanel {
 	private final JButton btnNewButton_13 = new JButton("New button");
 	private final JLabel lblMailInhalt = new JLabel("MailInhalt");
 	private final JButton btnPosteingang = new JButton("Posteingang");
+	private final JLabel lblName = new JLabel("Name");
+	private final JLabel lblVerringert = new JLabel("verringert");
+	private final JLabel lblNormal = new JLabel("normal");
+	private final JLabel lblErhht = new JLabel("erh\u00F6ht");
+	private final JLabel lblWert = new JLabel("Wert");
+
+	private final JLabel lblHaemoglobin = new JLabel("H\u00E4moglobin");
+	private final JLabel lblHaemoglobinGering = new JLabel(" ");
+	private final JLabel lblHaemoglobinNorm = new JLabel(" ");
+	private final JLabel lblHaemoglobinHoch = new JLabel(" ");
+	private final JLabel lblHaemoglobinWert = new JLabel(" ");
+	private final JLabel lblLeukozyten = new JLabel("Leukozyten");
+	private final JLabel lblLeukozytenGering = new JLabel(" ");
+	private final JLabel lblLeukozytenNorm = new JLabel(" ");
+	private final JLabel lblLeukozytenHoch = new JLabel(" ");
+	private final JLabel lblLeukozytenWert = new JLabel(" ");
+	private final JLabel lblThrombozytenn = new JLabel("Thrombozyten");
+	private final JLabel lblThrombozytenGering = new JLabel(" ");
+	private final JLabel lblThrombozytenNorm = new JLabel(" ");
+	private final JLabel lblThrombozytenHoch = new JLabel(" ");
+	private final JLabel lblThrombozytenWert = new JLabel(" ");
+	private final JLabel lblHaematokrit = new JLabel("H\u00E4matokrit");
+	private final JLabel lblHaematokritGering = new JLabel(" ");
+	private final JLabel lblHaematokritNorm = new JLabel(" ");
+	private final JLabel lblHaematokritHoch = new JLabel(" ");
+	private final JLabel lblHaematokritWert = new JLabel(" ");
+	private final JLabel lblMCH = new JLabel("MCH");
+	private final JLabel lblMCHGering = new JLabel(" ");
+	private final JLabel lblMCHNorm = new JLabel(" ");
+	private final JLabel lblMCHHoch = new JLabel(" ");
+	private final JLabel lblMCHWert = new JLabel(" ");
+	private final JLabel lblMCHC = new JLabel("MCHC");
+	private final JLabel lblMCHCGering = new JLabel(" ");
+	private final JLabel lblMCHCNorm = new JLabel(" ");
+	private final JLabel lblMCHCHoch = new JLabel(" ");
+	private final JLabel lblMCHCWert = new JLabel(" ");
+	private final JLabel lblMCV = new JLabel("MCV");
+	private final JLabel lblMCVGering = new JLabel(" ");
+	private final JLabel lblMCVNorm = new JLabel(" ");
+	private final JLabel lblMCVHoch = new JLabel(" ");
+	private final JLabel lblMCVWert = new JLabel(" ");
+	private static final Color GERING = new Color(224, 255, 255);
+	private static final Color NORMAL = new Color(152, 251, 152);
+	private static final Color HOCH = new Color(255, 182, 193);
 
 	/**
 	 * Create the panel.
@@ -300,8 +343,6 @@ public class Medizin extends JPanel {
 		lblWartendepatienten.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 
 		lblBlutbild.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		lblBlutwerte.setVerticalAlignment(SwingConstants.TOP);
-		lblBlutwerte.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnBZuruek.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 
 		lblUltraschall.setHorizontalAlignment(SwingConstants.CENTER);
@@ -347,6 +388,128 @@ public class Medizin extends JPanel {
 		btnNewButton_11.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnNewButton_12.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnNewButton_13.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+
+		lblName.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblVerringert.setHorizontalAlignment(SwingConstants.CENTER);
+		lblVerringert.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblNormal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNormal.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblErhht.setHorizontalAlignment(SwingConstants.CENTER);
+		lblErhht.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblWert.setHorizontalAlignment(SwingConstants.CENTER);
+		lblWert.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblHaemoglobin.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblHaemoglobinGering.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblHaemoglobinGering.setBackground(GERING);
+		lblHaemoglobinGering.setOpaque(true);
+		lblHaemoglobinNorm.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblHaemoglobinNorm.setBackground(NORMAL);
+		lblHaemoglobinNorm.setOpaque(true);
+		lblHaemoglobinHoch.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblHaemoglobinHoch.setBackground(HOCH);
+		lblHaemoglobinHoch.setOpaque(true);
+		lblHaemoglobinWert.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblHaemoglobinWert.setOpaque(true);
+		lblHaemoglobinGering.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHaemoglobinNorm.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHaemoglobinHoch.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHaemoglobinWert.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLeukozyten.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblLeukozytenGering.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblLeukozytenGering.setBackground(GERING);
+		lblLeukozytenGering.setOpaque(true);
+		lblLeukozytenNorm.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblLeukozytenNorm.setBackground(NORMAL);
+		lblLeukozytenNorm.setOpaque(true);
+		lblLeukozytenHoch.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblLeukozytenHoch.setBackground(HOCH);
+		lblLeukozytenHoch.setOpaque(true);
+		lblLeukozytenWert.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblLeukozytenWert.setOpaque(true);
+		lblLeukozytenGering.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLeukozytenNorm.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLeukozytenHoch.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLeukozytenWert.setHorizontalAlignment(SwingConstants.CENTER);
+		lblThrombozytenn.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblThrombozytenGering.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblThrombozytenGering.setBackground(GERING);
+		lblThrombozytenGering.setOpaque(true);
+		lblThrombozytenNorm.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblThrombozytenNorm.setBackground(NORMAL);
+		lblThrombozytenNorm.setOpaque(true);
+		lblThrombozytenHoch.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblThrombozytenHoch.setBackground(HOCH);
+		lblThrombozytenHoch.setOpaque(true);
+		lblThrombozytenWert.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblThrombozytenWert.setOpaque(true);
+		lblThrombozytenGering.setHorizontalAlignment(SwingConstants.CENTER);
+		lblThrombozytenNorm.setHorizontalAlignment(SwingConstants.CENTER);
+		lblThrombozytenHoch.setHorizontalAlignment(SwingConstants.CENTER);
+		lblThrombozytenWert.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHaematokrit.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblHaematokritGering.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblHaematokritGering.setBackground(GERING);
+		lblHaematokritGering.setOpaque(true);
+		lblHaematokritNorm.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblHaematokritNorm.setBackground(NORMAL);
+		lblHaematokritNorm.setOpaque(true);
+		lblHaematokritHoch.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblHaematokritHoch.setBackground(HOCH);
+		lblHaematokritHoch.setOpaque(true);
+		lblHaematokritWert.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblHaematokritWert.setOpaque(true);
+		lblHaematokritGering.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHaematokritNorm.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHaematokritHoch.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHaematokritWert.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMCH.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblMCHGering.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblMCHGering.setBackground(GERING);
+		lblMCHGering.setOpaque(true);
+		lblMCHNorm.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblMCHNorm.setBackground(NORMAL);
+		lblMCHNorm.setOpaque(true);
+		lblMCHHoch.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblMCHHoch.setBackground(HOCH);
+		lblMCHHoch.setOpaque(true);
+		lblMCHWert.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblMCHWert.setOpaque(true);
+		lblMCHGering.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMCHNorm.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMCHHoch.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMCHWert.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMCHC.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblMCHCGering.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblMCHCGering.setBackground(GERING);
+		lblMCHCGering.setOpaque(true);
+		lblMCHCNorm.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblMCHCNorm.setBackground(NORMAL);
+		lblMCHCNorm.setOpaque(true);
+		lblMCHCHoch.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblMCHCHoch.setBackground(HOCH);
+		lblMCHCHoch.setOpaque(true);
+		lblMCHCWert.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblMCHCWert.setOpaque(true);
+		lblMCHCGering.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMCHCNorm.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMCHCHoch.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMCHCWert.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMCV.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblMCVGering.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblMCVGering.setBackground(GERING);
+		lblMCVGering.setOpaque(true);
+		lblMCVNorm.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblMCVNorm.setBackground(NORMAL);
+		lblMCVNorm.setOpaque(true);
+		lblMCVHoch.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblMCVHoch.setBackground(HOCH);
+		lblMCVHoch.setOpaque(true);
+		lblMCVWert.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblMCVWert.setOpaque(true);
+		lblMCVGering.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMCVNorm.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMCVHoch.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMCVWert.setHorizontalAlignment(SwingConstants.CENTER);
 	}
 
 	private void addFields() {
@@ -379,10 +542,50 @@ public class Medizin extends JPanel {
 		infoPanel.add(lblPatientinfo, "cell 0 3");
 		infoPanel.add(lblWartendepatienten, "cell 0 4");
 
-		BlutbildPanel.setLayout(new MigLayout("", "[123px][924.00px]", "[45px][782.00px]"));
-		BlutbildPanel.add(btnBZuruek, "cell 0 0,alignx center,aligny center");
-		BlutbildPanel.add(lblBlutbild, "cell 1 0,alignx center,aligny center");
-		BlutbildPanel.add(lblBlutwerte, "cell 1 1,growy");
+		BlutbildPanel.setLayout(new MigLayout("", "[180][170][170][170][369.00px]", "[45px][][23.00px][][][][][][][]"));
+		BlutbildPanel.add(btnBZuruek, "cell 0 0,alignx left");
+		BlutbildPanel.add(lblBlutbild, "cell 1 0 3 1,alignx center,aligny center");
+
+		BlutbildPanel.add(lblName, "cell 0 2,growx");
+		BlutbildPanel.add(lblVerringert, "cell 1 2,growx");
+		BlutbildPanel.add(lblNormal, "cell 2 2,growx");
+		BlutbildPanel.add(lblErhht, "cell 3 2,growx");
+		BlutbildPanel.add(lblWert, "cell 4 2,grow");
+		BlutbildPanel.add(lblHaemoglobin, "cell 0 3,growx");
+		BlutbildPanel.add(lblHaemoglobinGering, "cell 1 3,grow");
+		BlutbildPanel.add(lblHaemoglobinNorm, "cell 2 3,grow");
+		BlutbildPanel.add(lblHaemoglobinHoch, "cell 3 3,growx");
+		BlutbildPanel.add(lblHaemoglobinWert, "cell 4 3,growx");
+		BlutbildPanel.add(lblLeukozyten, "cell 0 4,growx");
+		BlutbildPanel.add(lblLeukozytenGering, "cell 1 4,growx");
+		BlutbildPanel.add(lblLeukozytenNorm, "cell 2 4,growx");
+		BlutbildPanel.add(lblLeukozytenHoch, "cell 3 4,growx");
+		BlutbildPanel.add(lblLeukozytenWert, "cell 4 4,growx");
+		BlutbildPanel.add(lblThrombozytenn, "cell 0 5,growx");
+		BlutbildPanel.add(lblThrombozytenGering, "cell 1 5,growx");
+		BlutbildPanel.add(lblThrombozytenNorm, "cell 2 5,growx");
+		BlutbildPanel.add(lblThrombozytenHoch, "cell 3 5,growx");
+		BlutbildPanel.add(lblThrombozytenWert, "cell 4 5,growx");
+		BlutbildPanel.add(lblHaematokrit, "cell 0 6,growx");
+		BlutbildPanel.add(lblHaematokritGering, "cell 1 6,growx");
+		BlutbildPanel.add(lblHaematokritNorm, "cell 2 6,growx");
+		BlutbildPanel.add(lblHaematokritHoch, "cell 3 6,growx");
+		BlutbildPanel.add(lblHaematokritWert, "cell 4 6,growx");
+		BlutbildPanel.add(lblMCH, "cell 0 7,growx");
+		BlutbildPanel.add(lblMCHGering, "cell 1 7,growx");
+		BlutbildPanel.add(lblMCHNorm, "cell 2 7,growx");
+		BlutbildPanel.add(lblMCHHoch, "cell 3 7,growx");
+		BlutbildPanel.add(lblMCHWert, "cell 4 7,growx");
+		BlutbildPanel.add(lblMCHC, "cell 0 8,growx");
+		BlutbildPanel.add(lblMCHCGering, "cell 1 8,growx");
+		BlutbildPanel.add(lblMCHCNorm, "cell 2 8,growx");
+		BlutbildPanel.add(lblMCHCHoch, "cell 3 8,growx");
+		BlutbildPanel.add(lblMCHCWert, "cell 4 8,growx");
+		BlutbildPanel.add(lblMCV, "cell 0 9,growx");
+		BlutbildPanel.add(lblMCVGering, "cell 1 9,growx");
+		BlutbildPanel.add(lblMCVNorm, "cell 2 9,growx");
+		BlutbildPanel.add(lblMCVHoch, "cell 3 9,growx");
+		BlutbildPanel.add(lblMCVWert, "cell 4 9,growx");
 
 		roentgenPanel.add(btnRZurueck, "cell 0 0");
 		roentgenPanel.add(lblRntgen, "cell 1 0");
@@ -446,6 +649,7 @@ public class Medizin extends JPanel {
 				textArea.setText(" ");
 				inZelt = null;
 				lblPatientBild.setIcon(null);
+				btnDiagnose.setVisible(false);
 				btnAnamnese.setVisible(false);
 				btnBlutbild.setVisible(false);
 				btnRoentgen.setVisible(false);
@@ -482,7 +686,7 @@ public class Medizin extends JPanel {
 				} else {
 					inZelt = null;
 					lblPatientinfo.setText("Es Gibt Keine Patienten mehr.");
-					lblPatientBild.removeAll();
+					lblPatientBild.setIcon(null);
 					btnDiagnose.setVisible(false);
 				}
 				((CardLayout) panelContainer.getLayout()).show(panelContainer, infos);
@@ -583,7 +787,104 @@ public class Medizin extends JPanel {
 				if (inZelt != null) {
 					String json = spiel.backendSpiel.getBlutbild(inZelt.getID());
 					Blutbild blutwerte = gson.fromJson(json, Blutbild.class);
-					lblBlutwerte.setText(blutwerte.toString());
+					lblHaemoglobinGering.setText(blutwerte.getHaemoglobinkonzentrationVeringertBereich());
+					lblHaemoglobinNorm.setText(blutwerte.getHaemoglobinkonzentrationNormalBereich());
+					lblHaemoglobinHoch.setText(blutwerte.getHaemoglobinkonzentrationErhoetBereich());
+					lblHaemoglobinWert.setText("" + blutwerte.getHaemoglobinkonzentration());
+					if (blutwerte.inHaemoglobinkonzentrationVerringert()) {
+						lblHaemoglobinWert.setBackground(GERING);
+					} else if (blutwerte.inHaemoglobinkonzentrationNormal()) {
+						lblHaemoglobinWert.setBackground(NORMAL);
+					} else if (blutwerte.inHaemoglobinkonzentrationERhoet()) {
+						lblHaemoglobinWert.setBackground(HOCH);
+					} else {
+						lblHaemoglobinWert.setBackground(Color.LIGHT_GRAY);
+					}
+
+					lblLeukozytenGering.setText(blutwerte.getLeukozytenVeringertBereich());
+					lblLeukozytenNorm.setText(blutwerte.getLeukozytenNormalBereich());
+					lblLeukozytenHoch.setText(blutwerte.getLeukozytenErhoetBereich());
+					lblLeukozytenWert.setText("" + blutwerte.getLeukozyten());
+					if (blutwerte.inLeukozytenVerringert()) {
+						lblLeukozytenWert.setBackground(GERING);
+					} else if (blutwerte.inLeukozytenNormal()) {
+						lblLeukozytenWert.setBackground(NORMAL);
+					} else if (blutwerte.inLeukozytenERhoet()) {
+						lblLeukozytenWert.setBackground(HOCH);
+					} else {
+						lblLeukozytenWert.setBackground(Color.LIGHT_GRAY);
+					}
+
+					lblThrombozytenGering.setText(blutwerte.getThrombozytenVeringertBereich());
+					lblThrombozytenNorm.setText(blutwerte.getThrombozytenNormalBereich());
+					lblThrombozytenHoch.setText(blutwerte.getThrombozytenErhoetBereich());
+					lblThrombozytenWert.setText("" + blutwerte.getThrombozyten());
+					if (blutwerte.inThrombozytenVerringert()) {
+						lblThrombozytenWert.setBackground(GERING);
+					} else if (blutwerte.inThrombozytenNormal()) {
+						lblThrombozytenWert.setBackground(NORMAL);
+					} else if (blutwerte.inThrombozytenERhoet()) {
+						lblThrombozytenWert.setBackground(HOCH);
+					} else {
+						lblThrombozytenWert.setBackground(Color.LIGHT_GRAY);
+					}
+
+					lblHaematokritGering.setText(blutwerte.getHaemoglobinkonzentrationVeringertBereich());
+					lblHaematokritNorm.setText(blutwerte.getHaematokritNormalBereich());
+					lblHaematokritHoch.setText(blutwerte.getHaematokritErhoetBereich());
+					lblHaematokritWert.setText("" + blutwerte.getHaematokrit());
+					if (blutwerte.inHaematokritVerringert()) {
+						lblHaematokritWert.setBackground(GERING);
+					} else if (blutwerte.inHaematokritNormal()) {
+						lblHaematokritWert.setBackground(NORMAL);
+					} else if (blutwerte.inHaematokritERhoet()) {
+						lblHaematokritWert.setBackground(HOCH);
+					} else {
+						lblHaematokritWert.setBackground(Color.LIGHT_GRAY);
+					}
+
+					lblMCHGering.setText(blutwerte.getMCHVeringertBereich());
+					lblMCHNorm.setText(blutwerte.getMCHNormalBereich());
+					lblMCHHoch.setText(blutwerte.getMCHErhoetBereich());
+					lblMCHWert.setText("" + blutwerte.getMCH());
+					if (blutwerte.inMCHVerringert()) {
+						lblMCHWert.setBackground(GERING);
+					} else if (blutwerte.inMCHNormal()) {
+						lblMCHWert.setBackground(NORMAL);
+					} else if (blutwerte.inMCHERhoet()) {
+						lblMCHWert.setBackground(HOCH);
+					} else {
+						lblMCHWert.setBackground(Color.LIGHT_GRAY);
+					}
+
+					lblMCHCGering.setText(blutwerte.getMCHCVeringertBereich());
+					lblMCHCNorm.setText(blutwerte.getMCHCNormalBereich());
+					lblMCHCHoch.setText(blutwerte.getMCHCErhoetBereich());
+					lblMCHCWert.setText("" + blutwerte.getMCHC());
+					if (blutwerte.inMCHCVerringert()) {
+						lblMCHCWert.setBackground(GERING);
+					} else if (blutwerte.inMCHCNormal()) {
+						lblMCHCWert.setBackground(NORMAL);
+					} else if (blutwerte.inMCHCERhoet()) {
+						lblMCHCWert.setBackground(HOCH);
+					} else {
+						lblMCHCWert.setBackground(Color.LIGHT_GRAY);
+					}
+
+					lblMCVGering.setText(blutwerte.getMCVVeringertBereich());
+					lblMCVNorm.setText(blutwerte.getMCVNormalBereich());
+					lblMCVHoch.setText(blutwerte.getMCVErhoetBereich());
+					lblMCVWert.setText("" + blutwerte.getMCV());
+					if (blutwerte.inMCVVerringert()) {
+						lblMCVWert.setBackground(GERING);
+					} else if (blutwerte.inMCVNormal()) {
+						lblMCVWert.setBackground(NORMAL);
+					} else if (blutwerte.inMCVERhoet()) {
+						lblMCVWert.setBackground(HOCH);
+					} else {
+						lblMCVWert.setBackground(Color.LIGHT_GRAY);
+					}
+					BlutbildPanel.repaint();
 					((CardLayout) panelContainer.getLayout()).show(panelContainer, blutbild);
 				}
 			}
