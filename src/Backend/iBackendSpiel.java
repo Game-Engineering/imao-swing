@@ -17,6 +17,8 @@ public interface iBackendSpiel {
 
 	public String neueRundeArzt();
 
+	public String getMailsArzt();
+
 	public String getManagerDaten();
 
 	public String frageAnamnese(int PatientID, int frage);

@@ -26,6 +26,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class StartPanel extends JPanel {
@@ -55,24 +56,29 @@ public class StartPanel extends JPanel {
 	 */
 	public StartPanel(Spiel spiel1) {
 		super();
+		setBackground(Color.BLACK);
 		setPreferredSize(new Dimension(2000, 930));
 
 		this.spiel = spiel1;
 
 		lblHauptmen = new JLabel("Hauptmen\u00FC");
+		lblHauptmen.setForeground(Color.WHITE);
 		lblHauptmen.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		setLayout(new MigLayout("", "[600][400][400][600]", "[22.00px][255.00][80.00][35.00]"));
 		add(lblHauptmen, "cell 0 0 4 1,alignx center,aligny top");
 
 		panel = new JPanel();
+		panel.setBackground(Color.BLACK);
 		add(panel, "cell 1 1 2 1,growx,aligny top");
 		panel.setLayout(new GridLayout(7, 2, 0, 0));
 
 		JLabel lblVornameArzt = new JLabel("Vorname:");
+		lblVornameArzt.setForeground(Color.WHITE);
 		panel.add(lblVornameArzt);
 		lblVornameArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
 		lblVornameManager = new JLabel("Vorname:");
+		lblVornameManager.setForeground(Color.WHITE);
 		panel.add(lblVornameManager);
 		lblVornameManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
@@ -87,10 +93,12 @@ public class StartPanel extends JPanel {
 		txtVornameManager.setColumns(10);
 
 		JLabel lblNachnameArzt = new JLabel("Nachname:");
+		lblNachnameArzt.setForeground(Color.WHITE);
 		panel.add(lblNachnameArzt);
 		lblNachnameArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
 		lblNachnameManager = new JLabel("Nachname:");
+		lblNachnameManager.setForeground(Color.WHITE);
 		panel.add(lblNachnameManager);
 		lblNachnameManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
@@ -105,18 +113,30 @@ public class StartPanel extends JPanel {
 		txtNachnameManager.setColumns(10);
 
 		tglbtnGeschlechtArzt = new JToggleButton("männlich");
+		tglbtnGeschlechtArzt.setForeground(Color.WHITE);
+		tglbtnGeschlechtArzt.setBorder(new LineBorder(new Color(128, 128, 128), 2, true));
+		tglbtnGeschlechtArzt.setBackground(Color.DARK_GRAY);
 		panel.add(tglbtnGeschlechtArzt);
 		tglbtnGeschlechtArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
 		tglbtnGeschlechtManager = new JToggleButton("m\u00E4nnlich");
+		tglbtnGeschlechtManager.setForeground(Color.WHITE);
+		tglbtnGeschlechtManager.setBorder(new LineBorder(Color.GRAY, 2, true));
+		tglbtnGeschlechtManager.setBackground(Color.DARK_GRAY);
 		panel.add(tglbtnGeschlechtManager);
 		tglbtnGeschlechtManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
 		btnErzeugeArzt = new JButton("erzeuge Arzt");
+		btnErzeugeArzt.setForeground(Color.WHITE);
+		btnErzeugeArzt.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnErzeugeArzt.setBackground(Color.DARK_GRAY);
 		panel.add(btnErzeugeArzt);
 		btnErzeugeArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
 		btnErzeugeManager = new JButton("erzeuge Manager");
+		btnErzeugeManager.setBackground(Color.DARK_GRAY);
+		btnErzeugeManager.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnErzeugeManager.setForeground(Color.WHITE);
 		panel.add(btnErzeugeManager);
 		btnErzeugeManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
@@ -148,10 +168,16 @@ public class StartPanel extends JPanel {
 		});
 
 		btnStarteSpielArzt = new JButton("starte Spiel Arzt");
+		btnStarteSpielArzt.setForeground(Color.WHITE);
+		btnStarteSpielArzt.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnStarteSpielArzt.setBackground(Color.DARK_GRAY);
 		panel.add(btnStarteSpielArzt);
 		btnStarteSpielArzt.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
 		btnStarteSpielManager = new JButton("starte Spiel Manager");
+		btnStarteSpielManager.setBackground(Color.DARK_GRAY);
+		btnStarteSpielManager.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnStarteSpielManager.setForeground(Color.WHITE);
 		panel.add(btnStarteSpielManager);
 		btnStarteSpielManager.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
@@ -204,11 +230,13 @@ public class StartPanel extends JPanel {
 		});
 
 		lblArztinfo = new JLabel(" ");
+		lblArztinfo.setForeground(Color.WHITE);
 		lblArztinfo.setVerticalAlignment(SwingConstants.TOP);
 		add(lblArztinfo, "cell 1 2,grow");
 		lblArztinfo.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
 		lblManagerinfo = new JLabel(" ");
+		lblManagerinfo.setForeground(Color.WHITE);
 		lblManagerinfo.setVerticalAlignment(SwingConstants.TOP);
 		add(lblManagerinfo, "cell 2 2,grow");
 		lblManagerinfo.setFont(new Font("Tahoma", Font.PLAIN, 30));

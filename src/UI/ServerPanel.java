@@ -22,6 +22,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.BoxLayout;
+import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class ServerPanel extends JPanel {
@@ -44,23 +45,30 @@ public class ServerPanel extends JPanel {
 
 	public ServerPanel() {
 		super();
+		setBackground(Color.BLACK);
 		setPreferredSize(new Dimension(2000, 930));
 		setLayout(new MigLayout("", "[600][800][600]", "[37px][49.00][176.00][35.00px][39.00][37px][]"));
 
 		lblHead = new JLabel("Bitte geben Sie die Adresse des Servers auf dem Sie Spielen m\u00F6chten ein.");
+		lblHead.setForeground(Color.WHITE);
 		lblHead.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHead.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		add(lblHead, "cell 0 0 3 1,growx,aligny top");
 
 		panel = new JPanel();
+		panel.setBackground(Color.BLACK);
 		add(panel, "cell 1 2,growx,aligny top");
 		panel.setLayout(new GridLayout(4, 2, 0, 0));
 
 		btnLokal = new JButton("localhost");
+		btnLokal.setBackground(Color.DARK_GRAY);
+		btnLokal.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnLokal.setForeground(Color.WHITE);
 		panel.add(btnLokal);
 		btnLokal.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
 		label = new JLabel("");
+		label.setForeground(Color.WHITE);
 		panel.add(label);
 
 		txtAdresse = new JTextField();
@@ -69,19 +77,28 @@ public class ServerPanel extends JPanel {
 		txtAdresse.setColumns(10);
 
 		btnServer = new JButton("verbinden");
+		btnServer.setForeground(Color.WHITE);
+		btnServer.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnServer.setBackground(Color.DARK_GRAY);
 		panel.add(btnServer);
 		btnServer.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
 		label_1 = new JLabel("");
+		label_1.setForeground(Color.WHITE);
 		panel.add(label_1);
 		lblServeradresse = new JLabel(" ");
+		lblServeradresse.setForeground(Color.WHITE);
 		panel.add(lblServeradresse);
 		lblServeradresse.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
 		label_2 = new JLabel(" ");
+		label_2.setForeground(Color.WHITE);
 		panel.add(label_2);
 
 		btnStart = new JButton("Start");
+		btnStart.setBackground(Color.DARK_GRAY);
+		btnStart.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnStart.setForeground(Color.WHITE);
 		panel.add(btnStart);
 		btnStart.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		btnServer.addActionListener(new ActionListener() {
@@ -109,7 +126,7 @@ public class ServerPanel extends JPanel {
 		lblFehler.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFehler.setForeground(Color.RED);
 		lblFehler.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		add(lblFehler, "cell 1 3,growx");
+		add(lblFehler, "cell 0 3 3 1,growx");
 	}
 
 	private void verbindeServer(String adresse) {
@@ -135,6 +152,10 @@ public class ServerPanel extends JPanel {
 
 	public BackendSpielStub getBackendSpiel() {
 		return backendSpiel;
+	}
+
+	public JLabel getLblFehler() {
+		return lblFehler;
 	}
 
 }

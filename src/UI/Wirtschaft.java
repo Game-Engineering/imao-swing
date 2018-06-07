@@ -32,6 +32,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Label;
 import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class Wirtschaft extends JPanel {
@@ -44,7 +45,6 @@ public class Wirtschaft extends JPanel {
 	private static final String SponsorAnwerbenPanelName = "SponsorAnwerbenPanel";
 	private static final String MailPanelName = "MailPanel";
 	private static final String PressekonferenzPanelName = "PressekonferenzPanel";
-	private static final String PressekonferenzLauftPanelName = "PressekonferenzLauftPanel";
 	private final Spiel spiel;
 
 	private List<Mail> mails;
@@ -83,7 +83,6 @@ public class Wirtschaft extends JPanel {
 	private final JButton btnAntwort_3 = new JButton("Antwort");
 
 	private final JButton btnZurcuekSponsor = new JButton("Zur\u00FCck");
-	private final JButton[] sponsorenButtons = new JButton[50];
 	private final JButton btnSponsorAnwerben1 = new JButton("anwerben");
 	private final JButton btnSponsorAnwerben2 = new JButton("anwerben");
 	private final JButton btnSponsorAnwerben3 = new JButton("anwerben");
@@ -98,6 +97,10 @@ public class Wirtschaft extends JPanel {
 	private final JButton btnSponsorAnwerben12 = new JButton("anwerben");
 	private final JButton btnSponsorAnwerben13 = new JButton("anwerben");
 	private final JButton btnSponsorAnwerben14 = new JButton("anwerben");
+	private final JButton[] sponsorenButtons = { btnSponsorAnwerben1, btnSponsorAnwerben2, btnSponsorAnwerben3,
+			btnSponsorAnwerben4, btnSponsorAnwerben5, btnSponsorAnwerben6, btnSponsorAnwerben7, btnSponsorAnwerben8,
+			btnSponsorAnwerben9, btnSponsorAnwerben10, btnSponsorAnwerben11, btnSponsorAnwerben12, btnSponsorAnwerben13,
+			btnSponsorAnwerben14 };
 
 	private final JButton btnZurueck = new JButton("Zur\u00FCck");
 	private final JButton btnNeueRunde = new JButton("Neue Runde");
@@ -222,16 +225,16 @@ public class Wirtschaft extends JPanel {
 	 * Create the panel.
 	 */
 	public Wirtschaft(Spiel spiel) {
+		setBackground(new Color(0, 0, 102));
 		this.spiel = spiel;
 		setPreferredSize(new Dimension(2000, 930));
 		setLayout();
+		lblWirtschaft.setForeground(Color.WHITE);
 
 		add(lblWirtschaft, "cell 0 0 3 1,growx,aligny top");
 		add(buttonPanel, "cell 0 1,alignx left,aligny top");
+		panelContainer.setBackground(new Color(0, 0, 153));
 		add(panelContainer, "cell 1 1");
-
-		buttonPanel.setOpaque(false);
-		TextPanel.setOpaque(false);
 
 		panelContainer.setLayout(new CardLayout(0, 0));
 
@@ -239,29 +242,32 @@ public class Wirtschaft extends JPanel {
 		gl_TextPanel.setHorizontalGroup(gl_TextPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_TextPanel.createSequentialGroup().addContainerGap()
 						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE).addContainerGap()));
+		scrollPane.setBackground(new Color(0, 0, 153));
 		gl_TextPanel.setVerticalGroup(gl_TextPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_TextPanel.createSequentialGroup().addContainerGap()
 						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 711, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(136, Short.MAX_VALUE)));
+		txtrText.setBackground(new Color(0, 0, 204));
+		txtrText.setForeground(Color.WHITE);
 		scrollPane.setViewportView(txtrText);
 
 		txtrText.setWrapStyleWord(true);
 		txtrText.setEditable(false);
 		txtrText.setLineWrap(true);
 		txtrText.setFocusable(false);
-		txtrText.setOpaque(false);
 		txtrText.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		textArea.setBackground(new Color(0, 0, 204));
+		textArea.setForeground(Color.WHITE);
 
 		textArea.setWrapStyleWord(true);
 		textArea.setEditable(false);
 		textArea.setLineWrap(true);
 		textArea.setFocusable(false);
-		textArea.setOpaque(false);
+		TextPanel.setBackground(new Color(0, 0, 153));
 
 		TextPanel.setLayout(gl_TextPanel);
 
 		add(InfoPanel, "cell 2 1,grow");
-		InfoPanel.setOpaque(false);
 
 		setFormat();
 		addActionListeners();
@@ -273,27 +279,51 @@ public class Wirtschaft extends JPanel {
 	private void setLayout() {
 		setLayout(new MigLayout("", "[340][1230.00px][410.00px]", "[53px][749.00px][]"));
 		InfoPanel.setLayout(new MigLayout("", "[305.00px]", "[37px][234.00px][37px][123.00px][37px][129.00px]"));
+		SponsorenPanel.setForeground(Color.WHITE);
+		SponsorenPanel.setBackground(new Color(0, 0, 153));
 		SponsorenPanel.setLayout(new MigLayout("", "[100.00][350][150][350][151.00]", "[][][][][][][][][]"));
-		SponsorAnwerbenPanel.setLayout(new MigLayout("", "[100][150][980]", "[][][]"));
+		SponsorAnwerbenPanel.setBackground(new Color(0, 0, 153));
+		SponsorAnwerbenPanel.setLayout(new MigLayout("", "[115.00][150][980]", "[33.00][][]"));
+		InterviewPartnerPanel.setBackground(new Color(0, 0, 153));
 
 		InterviewPartnerPanel.setLayout(new MigLayout("", "[100][320][210][600]", "[][][][][][][]"));
 	}
 
 	private void setFormat() {
+		buttonPanel.setOpaque(false);
+		panelContainer.setOpaque(false);
+		InfoPanel.setOpaque(false);
+		lblManagerinfo.setForeground(Color.WHITE);
 
 		lblManagerinfo.setHorizontalAlignment(SwingConstants.LEFT);
 		lblManagerinfo.setVerticalAlignment(SwingConstants.TOP);
+		lblArztinfo.setForeground(Color.WHITE);
 		lblArztinfo.setVerticalAlignment(SwingConstants.TOP);
 		lblArztinfo.setHorizontalAlignment(SwingConstants.LEFT);
 
 		lblWirtschaft.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWirtschaft.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblWirtschaft.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		btnInterviewpartner.setBorder(new LineBorder(Color.GRAY, 2));
+		btnInterviewpartner.setBackground(Color.DARK_GRAY);
+		btnInterviewpartner.setForeground(Color.WHITE);
 
 		btnInterviewpartner.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnZurueckIPartner.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnZurueckIPartner.setBackground(Color.DARK_GRAY);
+		btnZurueckIPartner.setForeground(Color.WHITE);
 		btnZurueckIPartner.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnBeginneInterview.setForeground(Color.WHITE);
+		btnBeginneInterview.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnBeginneInterview.setBackground(Color.DARK_GRAY);
 		btnBeginneInterview.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnBeginneInterview_1.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnBeginneInterview_1.setBackground(Color.DARK_GRAY);
+		btnBeginneInterview_1.setForeground(Color.WHITE);
 		btnBeginneInterview_1.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnBeginneInterview_2.setForeground(Color.WHITE);
+		btnBeginneInterview_2.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnBeginneInterview_2.setBackground(Color.DARK_GRAY);
 		btnBeginneInterview_2.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnAntwort.setForeground(Color.WHITE);
 		btnAntwort.setBackground(Color.DARK_GRAY);
@@ -307,50 +337,84 @@ public class Wirtschaft extends JPanel {
 		btnAntwort_3.setForeground(Color.WHITE);
 		btnAntwort_3.setBackground(Color.DARK_GRAY);
 		btnAntwort_3.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnZurcuekSponsor.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnZurcuekSponsor.setBackground(Color.DARK_GRAY);
+		btnZurcuekSponsor.setForeground(Color.WHITE);
 
 		btnZurcuekSponsor.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnSponsorAnwerben1.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnSponsorAnwerben2.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnSponsorAnwerben3.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnSponsorAnwerben4.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnSponsorAnwerben5.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnSponsorAnwerben6.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnSponsorAnwerben7.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnSponsorAnwerben8.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnSponsorAnwerben9.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnSponsorAnwerben10.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnSponsorAnwerben11.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnSponsorAnwerben12.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnSponsorAnwerben13.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnSponsorAnwerben14.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+
+		btnZurueck.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnZurueck.setBackground(Color.DARK_GRAY);
+
 		btnZurueck.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnNeueRunde.setForeground(Color.WHITE);
+		btnNeueRunde.setBackground(Color.DARK_GRAY);
+		btnNeueRunde.setBorder(new LineBorder(new Color(128, 128, 128), 2, true));
 
 		btnNeueRunde.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnNeueRunde.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnBudgetbreicht.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnBudgetbreicht.setBackground(Color.DARK_GRAY);
+		btnBudgetbreicht.setForeground(Color.WHITE);
+		btnBudgetbreicht.setBorder(new LineBorder(new Color(128, 128, 128), 2, true));
 		btnArztbreicht.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnArztbreicht.setBackground(Color.DARK_GRAY);
+		btnArztbreicht.setForeground(Color.WHITE);
+		btnArztbreicht.setBorder(new LineBorder(new Color(128, 128, 128), 2, true));
+		btnHaltePressekonferenz.setBorder(new LineBorder(new Color(128, 128, 128), 2, true));
+		btnHaltePressekonferenz.setBackground(Color.DARK_GRAY);
+		btnHaltePressekonferenz.setForeground(Color.WHITE);
 		btnHaltePressekonferenz.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnKaufeRntgen.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnKaufeRntgen.setBackground(Color.DARK_GRAY);
+		btnKaufeRntgen.setForeground(Color.WHITE);
+		btnKaufeRntgen.setBorder(new LineBorder(new Color(128, 128, 128), 2, true));
 		btnKaufeUltraschall.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnKaufeUltraschall.setBackground(Color.DARK_GRAY);
+		btnKaufeUltraschall.setForeground(Color.WHITE);
+		btnKaufeUltraschall.setBorder(new LineBorder(new Color(128, 128, 128), 2, true));
 		btnffneKatalog.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnffneKatalog.setBackground(Color.DARK_GRAY);
+		btnffneKatalog.setForeground(Color.WHITE);
+		btnffneKatalog.setBorder(new LineBorder(new Color(128, 128, 128), 2, true));
 		btnPosteingang.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnPosteingang.setBackground(Color.DARK_GRAY);
+		btnPosteingang.setForeground(Color.WHITE);
+		btnPosteingang.setBorder(new LineBorder(new Color(128, 128, 128), 2, true));
 		btnLob.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnLob.setBackground(Color.DARK_GRAY);
+		btnLob.setForeground(Color.WHITE);
+		btnLob.setBorder(new LineBorder(new Color(128, 128, 128), 2, true));
 		btnAbmahnung.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnAbmahnung.setBackground(Color.DARK_GRAY);
+		btnAbmahnung.setForeground(Color.WHITE);
+		btnAbmahnung.setBorder(new LineBorder(new Color(128, 128, 128), 2, true));
 		btnGert.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnGert.setBackground(Color.DARK_GRAY);
+		btnGert.setForeground(Color.WHITE);
+		btnGert.setBorder(new LineBorder(new Color(128, 128, 128), 2, true));
 		btnMglicheMails.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnMglicheMails.setBackground(Color.DARK_GRAY);
+		btnMglicheMails.setForeground(Color.WHITE);
+		btnMglicheMails.setBorder(new LineBorder(new Color(128, 128, 128), 2, true));
 
 		lblManagerinfo.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		lblArztinfo.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblRundeinfo.setForeground(Color.WHITE);
 		lblRundeinfo.setHorizontalAlignment(SwingConstants.LEFT);
 		lblRundeinfo.setVerticalAlignment(SwingConstants.TOP);
 		lblRundeinfo.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		lblWirtschaft.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblInterviewPartner.setForeground(Color.WHITE);
 
 		lblInterviewPartner.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInterviewPartner.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		lblPartner.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblPartner.setForeground(Color.WHITE);
 		lblPartner_1.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblPartner_1.setForeground(Color.WHITE);
 		lblPartner_2.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblPartner_2.setForeground(Color.WHITE);
 		lblInterview.setForeground(Color.LIGHT_GRAY);
 		lblInterview.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInterview.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
@@ -358,54 +422,96 @@ public class Wirtschaft extends JPanel {
 		lblFrage.setForeground(Color.WHITE);
 		lblFrage.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFrage.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnSponsoren.setBackground(Color.DARK_GRAY);
+		btnSponsoren.setForeground(Color.WHITE);
+		btnSponsoren.setBorder(new LineBorder(new Color(128, 128, 128), 2, true));
 
 		btnSponsoren.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblMglicheSponsoren.setForeground(Color.WHITE);
 
 		lblMglicheSponsoren.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMglicheSponsoren.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblSponsor1.setForeground(Color.WHITE);
 		lblSponsor1.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblSponsor2.setForeground(Color.WHITE);
 		lblSponsor2.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblSponsor3.setForeground(Color.WHITE);
 		lblSponsor3.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblSponsor4.setForeground(Color.WHITE);
 		lblSponsor4.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblSponsor5.setForeground(Color.WHITE);
 		lblSponsor5.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblSponsor6.setForeground(Color.WHITE);
 		lblSponsor6.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblSponsor7.setForeground(Color.WHITE);
 		lblSponsor7.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblSponsor8.setForeground(Color.WHITE);
 		lblSponsor8.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblSponsor9.setForeground(Color.WHITE);
 		lblSponsor9.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblSponsor10.setForeground(Color.WHITE);
 		lblSponsor10.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblSponsor11.setForeground(Color.WHITE);
 		lblSponsor11.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblSponsor12.setForeground(Color.WHITE);
 		lblSponsor12.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblSponsor13.setForeground(Color.WHITE);
 		lblSponsor13.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblSponsor14.setForeground(Color.WHITE);
 		lblSponsor14.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblSponsorAnwerben.setForeground(Color.WHITE);
 
 		lblSponsorAnwerben.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSponsorAnwerben.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblIhreAnfrageWurde.setForeground(Color.WHITE);
 		lblIhreAnfrageWurde.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 
 		InfoPanel.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblRunde.setForeground(Color.WHITE);
 		lblRunde.setVerticalAlignment(SwingConstants.TOP);
 		lblRunde.setHorizontalAlignment(SwingConstants.LEFT);
 		lblRunde.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblManager.setForeground(Color.WHITE);
 		lblManager.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblArzt.setForeground(Color.WHITE);
 		lblArzt.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 
 		txtrText.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblPosteingang.setForeground(Color.WHITE);
 
 		lblPosteingang.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 
 		for (JButton button : mailButtons) {
 			button.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+			button.setForeground(Color.WHITE);
+			button.setBorder(new LineBorder(Color.GRAY, 2, true));
+			button.setBackground(Color.DARK_GRAY);
 		}
 
 		textArea.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblPressekonferenz.setForeground(Color.WHITE);
 
 		lblPressekonferenz.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblThema.setForeground(Color.WHITE);
 		lblThema.setVerticalAlignment(SwingConstants.TOP);
 		lblThema.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblPresseFrage.setBackground(new Color(0, 0, 204));
+		lblPresseFrage.setForeground(Color.WHITE);
+		lblPresseFrage.setOpaque(true);
 		lblPresseFrage.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnPresseAntwort1.setForeground(Color.WHITE);
+		btnPresseAntwort1.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnPresseAntwort1.setBackground(Color.DARK_GRAY);
 		btnPresseAntwort1.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnPresseAntwort2.setForeground(Color.WHITE);
+		btnPresseAntwort2.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnPresseAntwort2.setBackground(Color.DARK_GRAY);
 		btnPresseAntwort2.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnPresseAntwort3.setForeground(Color.WHITE);
+		btnPresseAntwort3.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnPresseAntwort3.setBackground(Color.DARK_GRAY);
 		btnPresseAntwort3.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		lblEinleitung.setForeground(Color.WHITE);
 		lblEinleitung.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 
 		lblPartnerName.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
@@ -420,7 +526,9 @@ public class Wirtschaft extends JPanel {
 		panelContainer.add(InterviewPanel, InterviewPanelName);
 		panelContainer.add(SponsorenPanel, SponsorenPanelName);
 		panelContainer.add(SponsorAnwerbenPanel, SponsorAnwerbenPanelName);
+		mailPanel.setBackground(new Color(0, 0, 153));
 		panelContainer.add(mailPanel, MailPanelName);
+		pressrkonferenzPanel.setBackground(new Color(0, 0, 153));
 		panelContainer.add(pressrkonferenzPanel, PressekonferenzPanelName);
 		pressrkonferenzPanel.setLayout(new MigLayout("", "[1230.00]", "[][][458.00][][][][][]"));
 		lblPressekonferenz.setHorizontalAlignment(SwingConstants.CENTER);
@@ -448,7 +556,7 @@ public class Wirtschaft extends JPanel {
 		InterviewPartnerPanel.add(lblPartner_1, "cell 1 4");
 		InterviewPartnerPanel.add(lblPartner_2, "cell 1 6");
 
-		InterviewPartnerPanel.add(btnZurueckIPartner, "cell 0 0");
+		InterviewPartnerPanel.add(btnZurueckIPartner, "cell 0 0,grow");
 		InterviewPartnerPanel.add(btnBeginneInterview, "cell 2 2");
 		InterviewPartnerPanel.add(btnBeginneInterview_1, "cell 2 4");
 		InterviewPartnerPanel.add(btnBeginneInterview_2, "cell 2 6");
@@ -483,22 +591,28 @@ public class Wirtschaft extends JPanel {
 		SponsorenPanel.add(lblSponsor13, "cell 3 7");
 		SponsorenPanel.add(lblSponsor14, "cell 3 8");
 
-		SponsorenPanel.add(btnZurcuekSponsor, "cell 0 0");
-		SponsorenPanel.add(btnSponsorAnwerben1, "cell 2 2");
-		SponsorenPanel.add(btnSponsorAnwerben2, "cell 2 3");
-		SponsorenPanel.add(btnSponsorAnwerben3, "cell 2 4");
-		SponsorenPanel.add(btnSponsorAnwerben4, "cell 2 5");
-		SponsorenPanel.add(btnSponsorAnwerben5, "cell 2 6");
-		SponsorenPanel.add(btnSponsorAnwerben6, "cell 2 7");
-		SponsorenPanel.add(btnSponsorAnwerben7, "cell 2 8");
-		SponsorenPanel.add(btnSponsorAnwerben8, "cell 4 2");
-		SponsorenPanel.add(btnSponsorAnwerben9, "cell 4 3");
-		SponsorenPanel.add(btnSponsorAnwerben10, "cell 4 4");
-		SponsorenPanel.add(btnSponsorAnwerben11, "cell 4 5");
-		SponsorenPanel.add(btnSponsorAnwerben12, "cell 4 6");
-		SponsorenPanel.add(btnSponsorAnwerben13, "cell 4 7");
-		SponsorenPanel.add(btnSponsorAnwerben14, "cell 4 8");
-		SponsorAnwerbenPanel.add(btnZurueck, "cell 0 0");
+		SponsorenPanel.add(btnZurcuekSponsor, "cell 0 0,grow");
+		SponsorenPanel.add(btnSponsorAnwerben1, "cell 2 2,growx");
+		SponsorenPanel.add(btnSponsorAnwerben2, "cell 2 3,growx");
+		SponsorenPanel.add(btnSponsorAnwerben3, "cell 2 4,growx");
+		SponsorenPanel.add(btnSponsorAnwerben4, "cell 2 5,growx");
+		SponsorenPanel.add(btnSponsorAnwerben5, "cell 2 6,growx");
+		SponsorenPanel.add(btnSponsorAnwerben6, "cell 2 7,growx");
+		SponsorenPanel.add(btnSponsorAnwerben7, "cell 2 8,growx");
+		SponsorenPanel.add(btnSponsorAnwerben8, "cell 4 2,growx");
+		SponsorenPanel.add(btnSponsorAnwerben9, "cell 4 3,growx");
+		SponsorenPanel.add(btnSponsorAnwerben10, "cell 4 4,growx");
+		SponsorenPanel.add(btnSponsorAnwerben11, "cell 4 5,growx");
+		SponsorenPanel.add(btnSponsorAnwerben12, "cell 4 6,growx");
+		SponsorenPanel.add(btnSponsorAnwerben13, "cell 4 7,growx");
+		SponsorenPanel.add(btnSponsorAnwerben14, "cell 4 8,growx");
+		for (JButton button : sponsorenButtons) {
+			button.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+			button.setForeground(Color.WHITE);
+			button.setBorder(new LineBorder(Color.GRAY, 2, true));
+			button.setBackground(Color.DARK_GRAY);
+		}
+		SponsorAnwerbenPanel.add(btnZurueck, "cell 0 0,growx");
 
 		SponsorAnwerbenPanel.add(lblSponsorAnwerben, "cell 1 0 2 1,growx");
 
@@ -508,6 +622,7 @@ public class Wirtschaft extends JPanel {
 		lblPosteingang.setHorizontalAlignment(SwingConstants.CENTER);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBackground(new Color(0, 0, 153));
 		GroupLayout gl_MailTestPanel = new GroupLayout(MailTestPanel);
 		gl_MailTestPanel.setHorizontalGroup(gl_MailTestPanel.createParallelGroup(Alignment.LEADING)
 				.addComponent(scrollPane_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE));
@@ -515,6 +630,7 @@ public class Wirtschaft extends JPanel {
 				.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE));
 
 		scrollPane_1.setViewportView(textArea);
+		MailTestPanel.setBackground(new Color(0, 0, 153));
 		MailTestPanel.setLayout(gl_MailTestPanel);
 
 		InfoPanel.add(lblRunde, "cell 0 0,alignx left,aligny top");
@@ -544,13 +660,16 @@ public class Wirtschaft extends JPanel {
 		buttonPanel.add(btnBudgetbreicht);
 
 		mailPanel.add(lblPosteingang, "cell 0 0 2 1,growx,aligny top");
+		mailButtonContainerPanel.setBackground(new Color(0, 0, 153));
 
 		mailPanel.add(mailButtonContainerPanel, "flowx,cell 0 2,grow");
 		mailButtonContainerPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		mailButtonContainerPanel.add(scrollPane_2);
+		mailButtonPanel.setBackground(new Color(0, 0, 153));
 
 		scrollPane_2.setViewportView(mailButtonPanel);
 		mailButtonPanel.setLayout(new GridLayout(0, 1, 0, 0));
+		lblEmpty.setBackground(new Color(0, 0, 153));
 		lblEmpty.setMinimumSize(new Dimension(57, 420));
 		lblEmpty.setVerticalAlignment(SwingConstants.TOP);
 
@@ -655,21 +774,33 @@ public class Wirtschaft extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				beginneInterview(partnerListe.interviewPartner.get(0).getId());
+				if (interviewLauft) {
+					((CardLayout) panelContainer.getLayout()).show(panelContainer, InterviewPanelName);
+				} else {
+					beginneInterview(partnerListe.interviewPartner.get(0).getId());
+				}
 			}
 		});
 		btnBeginneInterview_1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				beginneInterview(partnerListe.interviewPartner.get(1).getId());
+				if (interviewLauft) {
+					((CardLayout) panelContainer.getLayout()).show(panelContainer, InterviewPanelName);
+				} else {
+					beginneInterview(partnerListe.interviewPartner.get(1).getId());
+				}
 			}
 		});
 		btnBeginneInterview_2.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				beginneInterview(partnerListe.interviewPartner.get(2).getId());
+				if (interviewLauft) {
+					((CardLayout) panelContainer.getLayout()).show(panelContainer, InterviewPanelName);
+				} else {
+					beginneInterview(partnerListe.interviewPartner.get(2).getId());
+				}
 			}
 		});
 		btnAntwort.addActionListener(new ActionListener() {
@@ -751,7 +882,7 @@ public class Wirtschaft extends JPanel {
 				String mailString = spiel.backendSpiel.sendeMail(Mails.LOB.name());
 				Mail mail = gson.fromJson(mailString, Mail.class);
 				UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, FONT_SIZE)));
-				txtrText.setText(mail.toString());
+				txtrText.setText("Mail gesendet:\n\n" + mail.toString());
 				((CardLayout) panelContainer.getLayout()).show(panelContainer, TextPanelName);
 			}
 		});
@@ -763,7 +894,7 @@ public class Wirtschaft extends JPanel {
 				String mailString = spiel.backendSpiel.sendeMail(Mails.ABMAHNUNG.name());
 				Mail mail = gson.fromJson(mailString, Mail.class);
 				UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, FONT_SIZE)));
-				txtrText.setText(mail.toString());
+				txtrText.setText("Mail gesendet:\n\n" + mail.toString());
 				((CardLayout) panelContainer.getLayout()).show(panelContainer, TextPanelName);
 			}
 		});
@@ -775,7 +906,7 @@ public class Wirtschaft extends JPanel {
 				String mailString = spiel.backendSpiel.sendeMail(Mails.GERAET_GEKAUFT.name());
 				Mail mail = gson.fromJson(mailString, Mail.class);
 				UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("Tahoma", Font.PLAIN, FONT_SIZE)));
-				txtrText.setText(mail.toString());
+				txtrText.setText("Mail gesendet:\n\n" + mail.toString());
 				((CardLayout) panelContainer.getLayout()).show(panelContainer, TextPanelName);
 			}
 		});
@@ -1085,7 +1216,94 @@ public class Wirtschaft extends JPanel {
 				((CardLayout) panelContainer.getLayout()).show(panelContainer, MailPanelName);
 			}
 		});
+		addMailButtonBehavior();
 
+	}
+
+	private void beginneInterview(int id) {
+		background = new ImageIcon(this.getClass().getResource("/Bilder/Interview1.png")).getImage();
+		String json = spiel.backendSpiel.interview(id);
+		Interview interview = gson.fromJson(json, Interview.class);
+		if (!"ende".equals(interview.getStatus().toLowerCase())) {
+			interviewLauft = true;
+			lblPartnerName.setText(interview.getPartnerName());
+			System.out.println(interview.getPartnerName());
+			lblStatus.setText(interview.getStatus());
+			lblFrage.setText(interview.getFrage());
+			btnAntwort.setText(interview.getAntworten()[0]);
+			btnAntwort_1.setText(interview.getAntworten()[1]);
+			btnAntwort_2.setText(interview.getAntworten()[2]);
+			btnAntwort_3.setText(interview.getAntworten()[3]);
+		} else {
+			interviewLauft = false;
+			lblPartnerName.setText("");
+			lblFrage.setText("Das Interview ist beendet.");
+			lblStatus.setText(interview.getStatus());
+			btnAntwort.setVisible(false);
+			btnAntwort_1.setVisible(false);
+			btnAntwort_2.setVisible(false);
+			btnAntwort_3.setVisible(false);
+		}
+		((CardLayout) panelContainer.getLayout()).show(panelContainer, InterviewPanelName);
+	}
+
+	private void interviewAntwort(int antwort) {
+		String json = spiel.backendSpiel.interview(partnerListe.interviewPartner.get(0).getId(), antwort);
+		Interview interview = gson.fromJson(json, Interview.class);
+		System.out.println(interview.getPartnerName());
+		if (!"ende".equals(interview.getFrage().toLowerCase())) {
+			interviewLauft = true;
+			lblPartnerName.setText(interview.getPartnerName());
+			lblStatus.setText(interview.getStatus());
+			lblFrage.setText(interview.getFrage());
+			btnAntwort.setText(interview.getAntworten()[0]);
+			btnAntwort_1.setText(interview.getAntworten()[1]);
+			btnAntwort_2.setText(interview.getAntworten()[2]);
+			btnAntwort_3.setText(interview.getAntworten()[3]);
+		} else {
+			interviewLauft = false;
+			lblPartnerName.setText("");
+			lblFrage.setText("Das Interview ist beendet.");
+			lblStatus.setText(interview.getStatus());
+			btnAntwort.setVisible(false);
+			btnAntwort_1.setVisible(false);
+			btnAntwort_2.setVisible(false);
+			btnAntwort_3.setVisible(false);
+		}
+		((CardLayout) panelContainer.getLayout()).show(panelContainer, InterviewPanelName);
+	}
+
+	private void presseAntwort(int ID) {
+		String json = spiel.backendSpiel.haltePressekonferenz(ID);
+		Pressekonferenz2 kon = gson.fromJson(json, Pressekonferenz2.class);
+
+		if ("ende".equals(kon.getStatus().toLowerCase())) {
+			btnPresseAntwort1.setVisible(false);
+			btnPresseAntwort2.setVisible(false);
+			btnPresseAntwort3.setVisible(false);
+			lblPresseFrage.setText("Die Pressekonferenz ist beendet.");
+			lblEinleitung.setText(" ");
+			lblThema.setText(" ");
+			presseLauft = false;
+		} else {
+			lblThema.setText(kon.getThema());
+			lblEinleitung.setText("<html>" + kon.getEinleitung().replaceAll("\\n", "<br>") + "</html>");
+			lblPresseFrage.setText("<html>" + kon.getFrage().replaceAll("\\n", "<br>") + "</html>");
+			btnPresseAntwort1
+					.setText("<html>" + kon.getAntworten()[0].toString().replaceAll("\\n", "<br>") + "</html>");
+			btnPresseAntwort2
+					.setText("<html>" + kon.getAntworten()[1].toString().replaceAll("\\n", "<br>") + "</html>");
+			btnPresseAntwort3
+					.setText("<html>" + kon.getAntworten()[2].toString().replaceAll("\\n", "<br>") + "</html>");
+			btnPresseAntwort1.setVisible(true);
+			btnPresseAntwort2.setVisible(true);
+			btnPresseAntwort3.setVisible(true);
+
+		}
+		pressrkonferenzPanel.repaint();
+	}
+
+	private void addMailButtonBehavior() {
 		btnMail1.addActionListener(new ActionListener() {
 
 			@Override
@@ -1198,84 +1416,6 @@ public class Wirtschaft extends JPanel {
 				textArea.setText(temp.toString());
 			}
 		});
-	}
-
-	private void beginneInterview(int id) {
-		background = new ImageIcon(this.getClass().getResource("/Bilder/Interview1.png")).getImage();
-		String json = spiel.backendSpiel.interview(id);
-		Interview interview = gson.fromJson(json, Interview.class);
-		if (!"ende".equals(interview.getStatus().toLowerCase())) {
-			lblPartnerName.setText(interview.getPartnerName());
-			System.out.println(interview.getPartnerName());
-			lblStatus.setText(interview.getStatus());
-			lblFrage.setText(interview.getFrage());
-			btnAntwort.setText(interview.getAntworten()[0]);
-			btnAntwort_1.setText(interview.getAntworten()[1]);
-			btnAntwort_2.setText(interview.getAntworten()[2]);
-			btnAntwort_3.setText(interview.getAntworten()[3]);
-		} else {
-			lblPartnerName.setText("");
-			lblFrage.setText("Das Interview ist beendet.");
-			lblStatus.setText(interview.getStatus());
-			btnAntwort.setVisible(false);
-			btnAntwort_1.setVisible(false);
-			btnAntwort_2.setVisible(false);
-			btnAntwort_3.setVisible(false);
-		}
-		((CardLayout) panelContainer.getLayout()).show(panelContainer, InterviewPanelName);
-	}
-
-	private void interviewAntwort(int antwort) {
-		String json = spiel.backendSpiel.interview(partnerListe.interviewPartner.get(0).getId(), antwort);
-		Interview interview = gson.fromJson(json, Interview.class);
-		System.out.println(interview.getPartnerName());
-		if (!"ende".equals(interview.getFrage().toLowerCase())) {
-			lblPartnerName.setText(interview.getPartnerName());
-			lblStatus.setText(interview.getStatus());
-			lblFrage.setText(interview.getFrage());
-			btnAntwort.setText(interview.getAntworten()[0]);
-			btnAntwort_1.setText(interview.getAntworten()[1]);
-			btnAntwort_2.setText(interview.getAntworten()[2]);
-			btnAntwort_3.setText(interview.getAntworten()[3]);
-		} else {
-			lblPartnerName.setText("");
-			lblFrage.setText("Das Interview ist beendet.");
-			lblStatus.setText(interview.getStatus());
-			btnAntwort.setVisible(false);
-			btnAntwort_1.setVisible(false);
-			btnAntwort_2.setVisible(false);
-			btnAntwort_3.setVisible(false);
-		}
-		((CardLayout) panelContainer.getLayout()).show(panelContainer, InterviewPanelName);
-	}
-
-	private void presseAntwort(int ID) {
-		String json = spiel.backendSpiel.haltePressekonferenz(ID);
-		Pressekonferenz2 kon = gson.fromJson(json, Pressekonferenz2.class);
-
-		if ("ende".equals(kon.getStatus().toLowerCase())) {
-			btnPresseAntwort1.setVisible(false);
-			btnPresseAntwort2.setVisible(false);
-			btnPresseAntwort3.setVisible(false);
-			lblFrage.setText("");
-			lblEinleitung.setText("");
-			lblThema.setText("Die Pressekonferenz ist beendet.");
-			presseLauft = false;
-		} else {
-			lblThema.setText(kon.getThema());
-			lblEinleitung.setText("<html>" + kon.getEinleitung().replaceAll("\\n", "<br>") + "</html>");
-			lblPresseFrage.setText("<html>" + kon.getFrage().replaceAll("\\n", "<br>") + "</html>");
-			btnPresseAntwort1
-					.setText("<html>" + kon.getAntworten()[0].toString().replaceAll("\\n", "<br>") + "</html>");
-			btnPresseAntwort2
-					.setText("<html>" + kon.getAntworten()[1].toString().replaceAll("\\n", "<br>") + "</html>");
-			btnPresseAntwort3
-					.setText("<html>" + kon.getAntworten()[2].toString().replaceAll("\\n", "<br>") + "</html>");
-			btnPresseAntwort1.setVisible(true);
-			btnPresseAntwort2.setVisible(true);
-			btnPresseAntwort3.setVisible(true);
-
-		}
 	}
 
 	public String getFormattedText(String textInput) {

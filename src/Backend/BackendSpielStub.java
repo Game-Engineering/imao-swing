@@ -75,6 +75,11 @@ public class BackendSpielStub implements iBackendSpiel {
 	}
 
 	@Override
+	public String getMailsArzt() {
+		return getXmlvonRest("medizin/getMails/");
+	}
+
+	@Override
 	public String getManagerDaten() {
 		return getXmlvonRest("wirtschaft/getManagerDaten/");
 	}

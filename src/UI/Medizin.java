@@ -28,18 +28,23 @@ import javax.swing.ImageIcon;
 import com.google.gson.Gson;
 
 import Frontend.*;
-import Frontend.Spiel;
 
 import javax.swing.JButton;
 import java.awt.TextArea;
 import java.awt.Toolkit;
 import java.awt.Component;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.LineBorder;
+
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Label;
+import java.awt.GridLayout;
+import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 
 @SuppressWarnings("serial")
 public class Medizin extends JPanel {
@@ -57,6 +62,8 @@ public class Medizin extends JPanel {
 	private final JButton btnPatientHereinbitten = new JButton("N\u00E4chster Patient");
 
 	private Image background = null;
+	private Krankheiten krankheiten = null;
+	private List<Mail> mails;
 
 	private final JPanel infoPanel = new JPanel();
 	private final JPanel panel = new JPanel();
@@ -132,21 +139,52 @@ public class Medizin extends JPanel {
 	private final JLabel lblAnamnese = new JLabel("Anamnese");
 	private final JPanel mailPanel = new JPanel();
 	private final JLabel lblPosteingang = new JLabel("Posteingang");
-	private final JButton btnNewButton = new JButton("New button");
-	private final JButton btnNewButton_1 = new JButton("New button");
-	private final JButton btnNewButton_2 = new JButton("New button");
-	private final JButton btnNewButton_3 = new JButton("New button");
-	private final JButton btnNewButton_4 = new JButton("New button");
-	private final JButton btnNewButton_5 = new JButton("New button");
-	private final JButton btnNewButton_6 = new JButton("New button");
-	private final JButton btnNewButton_7 = new JButton("New button");
-	private final JButton btnNewButton_8 = new JButton("New button");
-	private final JButton btnNewButton_9 = new JButton("New button");
-	private final JButton btnNewButton_10 = new JButton("New button");
-	private final JButton btnNewButton_11 = new JButton("New button");
-	private final JButton btnNewButton_12 = new JButton("New button");
-	private final JButton btnNewButton_13 = new JButton("New button");
-	private final JLabel lblMailInhalt = new JLabel("MailInhalt");
+	private final JButton btnMail1 = new JButton("New button");
+	private final JButton btnMail2 = new JButton("New button");
+	private final JButton btnMail3 = new JButton("New button");
+	private final JButton btnMail4 = new JButton("New button");
+	private final JButton btnMail5 = new JButton("New button");
+	private final JButton btnMail6 = new JButton("New button");
+	private final JButton btnMail7 = new JButton("New button");
+	private final JButton btnMail8 = new JButton("New button");
+	private final JButton btnMail9 = new JButton("New button");
+	private final JButton btnMail10 = new JButton("New button");
+	private final JButton btnMail11 = new JButton("New button");
+	private final JButton btnMail12 = new JButton("New button");
+	private final JButton btnMail13 = new JButton("New button");
+	private final JButton btnMail14 = new JButton("New button");
+	private final JButton btnMail15 = new JButton("New button");
+	private final JButton btnMail16 = new JButton("New button");
+	private final JButton btnMail17 = new JButton("New button");
+	private final JButton btnMail18 = new JButton("New button");
+	private final JButton btnMail19 = new JButton("New button");
+	private final JButton btnMail20 = new JButton("New button");
+	private final JButton btnMail21 = new JButton("New button");
+	private final JButton btnMail22 = new JButton("New button");
+	private final JButton btnMail23 = new JButton("New button");
+	private final JButton btnMail24 = new JButton("New button");
+	private final JButton btnMail25 = new JButton("New button");
+	private final JButton btnMail26 = new JButton("New button");
+	private final JButton btnMail27 = new JButton("New button");
+	private final JButton btnMail28 = new JButton("New button");
+	private final JButton btnMail29 = new JButton("New button");
+	private final JButton btnMail30 = new JButton("New button");
+	private final JButton btnMail31 = new JButton("New button");
+	private final JButton btnMail32 = new JButton("New button");
+	private final JButton btnMail33 = new JButton("New button");
+	private final JButton btnMail34 = new JButton("New button");
+	private final JButton btnMail35 = new JButton("New button");
+	private final JButton btnMail36 = new JButton("New button");
+	private final JButton btnMail37 = new JButton("New button");
+	private final JButton btnMail38 = new JButton("New button");
+	private final JButton btnMail39 = new JButton("New button");
+	private final JButton btnMail40 = new JButton("New button");
+	private final JButton btnMail41 = new JButton("New button");
+	private final JButton[] mailButtons = { btnMail1, btnMail2, btnMail3, btnMail4, btnMail5, btnMail6, btnMail7,
+			btnMail8, btnMail9, btnMail10, btnMail11, btnMail12, btnMail13, btnMail14, btnMail15, btnMail16, btnMail17,
+			btnMail18, btnMail19, btnMail20, btnMail21, btnMail22, btnMail23, btnMail24, btnMail25, btnMail26,
+			btnMail27, btnMail28, btnMail29, btnMail30, btnMail31, btnMail32, btnMail33, btnMail34, btnMail35,
+			btnMail36, btnMail37, btnMail38, btnMail39, btnMail40, btnMail41 };
 	private final JButton btnPosteingang = new JButton("Posteingang");
 	private final JLabel lblName = new JLabel("Name");
 	private final JLabel lblVerringert = new JLabel("verringert");
@@ -192,27 +230,43 @@ public class Medizin extends JPanel {
 	private static final Color GERING = new Color(224, 255, 255);
 	private static final Color NORMAL = new Color(152, 251, 152);
 	private static final Color HOCH = new Color(255, 182, 193);
+	private static final String MailPanelName = "MailPanel";
+	private final JPanel mailButtonContainer = new JPanel();
+	private final JScrollPane scrollPane = new JScrollPane();
+	private final JPanel mailButtonPanel = new JPanel();
+	private final JPanel mailTextPanel = new JPanel();
+	private final JScrollPane scrollPane_1 = new JScrollPane();
+	private final JTextArea txtrMailtext = new JTextArea();
 
 	/**
 	 * Create the panel.
 	 */
 	public Medizin(Spiel spiel) {
-		setMaximumSize(new Dimension(2200, 870));
+		setBackground(new Color(255, 239, 213));
+		setMaximumSize(new Dimension(2200, 930));
+		setMinimumSize(new Dimension(2200, 930));
 		this.spiel = spiel;
 		setPreferredSize(new Dimension(2000, 930));
-		setLayout(new MigLayout("", "[340][1225][568.00]", "[][]"));
+		setLayout(new MigLayout("", "[340][1225,grow][568.00]", "[][870][-32.00]"));
+		panelContainer.setBackground(new Color(255, 239, 213));
 		panelContainer.setLayout(new CardLayout(0, 0));
+		lblMedizin.setForeground(Color.WHITE);
 		add(lblMedizin, "cell 0 0 3 1,growx");
 		add(buttonPanel, "cell 0 1,growy");
+		infoPanel.setBackground(new Color(255, 239, 213));
 		add(infoPanel, "cell 2 1");
+		buttonPanel.setOpaque(false);
+		infoPanel.setOpaque(false);
 
 		setLayout();
 
 		JPanel RundeInfpPane = new JPanel();
 		infoPanel.add(RundeInfpPane, "cell 0 5");
+		textWartendePatienten.setBackground(new Color(255, 239, 213));
 
 		JScrollPane infoPane = new JScrollPane(textWartendePatienten, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		infoPane.setBackground(new Color(255, 239, 213));
 		GroupLayout gl_RundeInfpPane = new GroupLayout(RundeInfpPane);
 		gl_RundeInfpPane.setHorizontalGroup(gl_RundeInfpPane.createParallelGroup(Alignment.LEADING)
 				.addComponent(infoPane, GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE));
@@ -222,7 +276,7 @@ public class Medizin extends JPanel {
 		textWartendePatienten.setEditable(false);
 		textWartendePatienten.setLineWrap(true);
 		textWartendePatienten.setFocusable(false);
-		textWartendePatienten.setOpaque(false);
+		textWartendePatienten.setOpaque(true);
 
 		RundeInfpPane.setLayout(gl_RundeInfpPane);
 
@@ -230,10 +284,13 @@ public class Medizin extends JPanel {
 		panelContainer.setMaximumSize(new Dimension(1080, 770));
 
 		add(panelContainer, "cell 1 1");
+		panelContainer.setOpaque(false);
 		dialogPanel.setMaximumSize(new Dimension(1225, 830));
 
 		panelContainer.add(dialogPanel, dialog);
+		panel.setBackground(new Color(255, 239, 213));
 		panelContainer.add(activPanel, infos);
+		BlutbildPanel.setBackground(new Color(255, 239, 213));
 		panelContainer.add(BlutbildPanel, blutbild);
 		panelContainer.add(UltraschallPanel, ultraschall);
 		panelContainer.add(diagnosePanel, diagnose);
@@ -241,13 +298,35 @@ public class Medizin extends JPanel {
 		panelContainer.add(erfolgPanel, erfolg);
 		panelContainer.add(keinErfolgPanel, keinErfolg);
 
+		panel.setOpaque(false);
+		dialogPanel.setOpaque(false);
+		activPanel.setOpaque(false);
+
+		UltraschallPanel.setOpaque(false);
+		diagnosePanel.setOpaque(false);
+		roentgenPanel.setOpaque(false);
+		erfolgPanel.setOpaque(false);
+		keinErfolgPanel.setOpaque(false);
+		mailPanel.setBackground(new Color(255, 239, 213));
+		mailPanel.setOpaque(false);
+		mailButtonContainer.setBackground(new Color(255, 239, 213));
+		mailButtonContainer.setOpaque(false);
+		mailButtonPanel.setBackground(new Color(255, 239, 213));
+		mailButtonPanel.setOpaque(false);
+		scrollPane.setBackground(new Color(255, 239, 213));
+		scrollPane.setOpaque(false);
+		scrollPane_1.setOpaque(false);
+
 		JScrollPane TextPane = new JScrollPane();
+		TextPane.setBackground(new Color(255, 239, 213));
+		textArea.setBackground(new Color(255, 239, 213));
 		TextPane.setRowHeaderView(textArea);
 		textArea.setWrapStyleWord(true);
 		textArea.setEditable(false);
 		textArea.setLineWrap(true);
 		textArea.setFocusable(false);
-		textArea.setOpaque(false);
+		textArea.setOpaque(true);
+		TextPane.setOpaque(false);
 
 		panel.add(TextPane, "cell 0 0,grow");
 		lblPatientBild.setPreferredSize(new Dimension(250, 250));
@@ -259,9 +338,21 @@ public class Medizin extends JPanel {
 		panel.add(lblPatientBild, "cell 1 0,alignx left,aligny top");
 
 		btnAnamnese.setVisible(false);
+		btnAnamnese.setForeground(Color.WHITE);
+		btnAnamnese.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnAnamnese.setBackground(Color.DARK_GRAY);
 		btnBlutbild.setVisible(false);
+		btnBlutbild.setForeground(Color.WHITE);
+		btnBlutbild.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnBlutbild.setBackground(Color.DARK_GRAY);
 		btnRoentgen.setVisible(false);
+		btnRoentgen.setForeground(Color.WHITE);
+		btnRoentgen.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnRoentgen.setBackground(Color.DARK_GRAY);
 		btnUltraschall.setVisible(false);
+		btnUltraschall.setForeground(Color.WHITE);
+		btnUltraschall.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnUltraschall.setBackground(Color.DARK_GRAY);
 		btnFrage0.setForeground(Color.WHITE);
 		btnFrage0.setBackground(Color.DARK_GRAY);
 
@@ -278,6 +369,13 @@ public class Medizin extends JPanel {
 
 		btnDiagnose.setVisible(false);
 
+		for (JButton button : mailButtons) {
+			button.setVisible(false);
+			button.setForeground(Color.WHITE);
+			button.setBorder(new LineBorder(Color.GRAY, 2, true));
+			button.setBackground(Color.DARK_GRAY);
+		}
+
 		format();
 		addFields();
 		addActionListeners();
@@ -290,7 +388,15 @@ public class Medizin extends JPanel {
 						.getScaledInstance(1080, 770, Image.SCALE_SMOOTH)));
 		((CardLayout) panelContainer.getLayout()).show(panelContainer, "Infos");
 
-		panelContainer.add(mailPanel, "name_435578306997333");
+		panelContainer.add(mailPanel, MailPanelName);
+
+	}
+
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Image hintergrund = new ImageIcon(this.getClass().getResource("/Bilder/HintergrundMedizin.png")).getImage();
+		g.drawImage(hintergrund, 0, 0, null);
 
 	}
 
@@ -301,23 +407,32 @@ public class Medizin extends JPanel {
 		dialogPanel.setLayout(new MigLayout("", "[1225]", "[24.00][500][][][][][]"));
 		panel.setLayout(new MigLayout("", "[960][265]", "[830]"));
 		roentgenPanel.setLayout(new MigLayout("", "[123][1102]", "[][772.00]"));
-		diagnosePanel.setLayout(new MigLayout("", "[123][1102]", "[][][][][][][][][][][][]"));
+		diagnosePanel.setLayout(new MigLayout("", "[123][464.00][481.00]", "[][][][][][][][][][][][]"));
 		UltraschallPanel.setLayout(new MigLayout("", "[123][1102]", "[47.00][783.00]"));
 		keinErfolgPanel.setLayout(new MigLayout("", "[][1225]", "[][830]"));
 		erfolgPanel.setLayout(new MigLayout("", "[][1225]", "[][830]"));
-		mailPanel.setLayout(new MigLayout("", "[114px][874.00]", "[][26px][][][][][][][][][][][][][][][]"));
+		mailPanel.setLayout(new MigLayout("", "[415][grow]", "[][26px,grow]"));
 	}
 
 	private void format() {
 		btnUntersuchungsmethoden.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnUntersuchungsmethoden.setForeground(Color.WHITE);
+		btnUntersuchungsmethoden.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnUntersuchungsmethoden.setBackground(Color.DARK_GRAY);
 		btnNeueRunde.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		lblMedizin.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnNeueRunde.setForeground(Color.WHITE);
+		btnNeueRunde.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnNeueRunde.setBackground(Color.DARK_GRAY);
+		lblMedizin.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		lblMedizin.setHorizontalAlignment(SwingConstants.CENTER);
 		btnAnamnese.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnUltraschall.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnRoentgen.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnBlutbild.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnPatientHereinbitten.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnPatientHereinbitten.setForeground(Color.WHITE);
+		btnPatientHereinbitten.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnPatientHereinbitten.setBackground(Color.DARK_GRAY);
 		textArea.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		lblRunde.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		textWartendePatienten.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
@@ -344,50 +459,96 @@ public class Medizin extends JPanel {
 
 		lblBlutbild.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnBZuruek.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnBZuruek.setForeground(Color.WHITE);
+		btnBZuruek.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnBZuruek.setBackground(Color.DARK_GRAY);
 
 		lblUltraschall.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUltraschall.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnUZurueck.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnUZurueck.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnUZurueck.setForeground(Color.WHITE);
+		btnUZurueck.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnUZurueck.setBackground(Color.DARK_GRAY);
 
 		btnDiagnose.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnDiagnose.setForeground(Color.WHITE);
+		btnDiagnose.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnDiagnose.setBackground(Color.DARK_GRAY);
+		lblDiagnose.setForeground(Color.WHITE);
 		lblDiagnose.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDiagnose.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnDZurueck.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnDZurueck.setForeground(Color.WHITE);
+		btnDZurueck.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnDZurueck.setBackground(Color.DARK_GRAY);
 		btnDiagnose0.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnDiagnose0.setForeground(Color.WHITE);
+		btnDiagnose0.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnDiagnose0.setBackground(Color.DARK_GRAY);
 		btnDiagnose1.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnDiagnose1.setForeground(Color.WHITE);
+		btnDiagnose1.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnDiagnose1.setBackground(Color.DARK_GRAY);
 		btnDiagnose2.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnDiagnose2.setForeground(Color.WHITE);
+		btnDiagnose2.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnDiagnose2.setBackground(Color.DARK_GRAY);
 		btnDiagnose3.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnDiagnose3.setForeground(Color.WHITE);
+		btnDiagnose3.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnDiagnose3.setBackground(Color.DARK_GRAY);
 		btnDiagnose4.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnDiagnose4.setForeground(Color.WHITE);
+		btnDiagnose4.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnDiagnose4.setBackground(Color.DARK_GRAY);
 		btnDiagnose5.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnDiagnose5.setForeground(Color.WHITE);
+		btnDiagnose5.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnDiagnose5.setBackground(Color.DARK_GRAY);
 		btnDiagnose6.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnDiagnose6.setForeground(Color.WHITE);
+		btnDiagnose6.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnDiagnose6.setBackground(Color.DARK_GRAY);
 		btnDiagnose7.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnDiagnose7.setForeground(Color.WHITE);
+		btnDiagnose7.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnDiagnose7.setBackground(Color.DARK_GRAY);
 		btnDiagnose8.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnDiagnose8.setForeground(Color.WHITE);
+		btnDiagnose8.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnDiagnose8.setBackground(Color.DARK_GRAY);
 		btnDiagnose9.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnDiagnose9.setForeground(Color.WHITE);
+		btnDiagnose9.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnDiagnose9.setBackground(Color.DARK_GRAY);
 
 		lblRntgen.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRntgen.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnRZurueck.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnRZurueck.setForeground(Color.WHITE);
+		btnRZurueck.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnRZurueck.setBackground(Color.DARK_GRAY);
 
 		btnEZurueck.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnKZurueck.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnKZurueck.setForeground(Color.WHITE);
+		btnKZurueck.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnKZurueck.setBackground(Color.DARK_GRAY);
 
 		btnPosteingang.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnPosteingang.setForeground(Color.WHITE);
+		btnPosteingang.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnPosteingang.setBackground(Color.DARK_GRAY);
+		lblPosteingang.setForeground(Color.WHITE);
+		lblPosteingang.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPosteingang.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		lblMailInhalt.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnNewButton_4.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnNewButton_5.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnNewButton_6.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnNewButton_7.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnNewButton_8.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnNewButton_9.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnNewButton_10.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnNewButton_11.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnNewButton_12.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		btnNewButton_13.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		for (JButton button : mailButtons) {
+			button.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		}
+		txtrMailtext.setBackground(new Color(255, 239, 213));
+		txtrMailtext.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		txtrMailtext.setOpaque(true);
 
 		lblName.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		lblVerringert.setHorizontalAlignment(SwingConstants.CENTER);
@@ -593,17 +754,17 @@ public class Medizin extends JPanel {
 		roentgenPanel.add(lblRorntgenbild, "cell 1 1,grow");
 
 		diagnosePanel.add(lblDiagnose, "cell 1 0");
-		diagnosePanel.add(btnDZurueck, "cell 0 0");
-		diagnosePanel.add(btnDiagnose0, "cell 1 2");
-		diagnosePanel.add(btnDiagnose1, "cell 1 3");
-		diagnosePanel.add(btnDiagnose2, "cell 1 4");
-		diagnosePanel.add(btnDiagnose3, "cell 1 5");
-		diagnosePanel.add(btnDiagnose4, "cell 1 6");
-		diagnosePanel.add(btnDiagnose5, "cell 1 7");
-		diagnosePanel.add(btnDiagnose6, "cell 1 8");
-		diagnosePanel.add(btnDiagnose7, "cell 1 9");
-		diagnosePanel.add(btnDiagnose8, "cell 1 10");
-		diagnosePanel.add(btnDiagnose9, "cell 1 11");
+		diagnosePanel.add(btnDZurueck, "cell 0 0,growx");
+		diagnosePanel.add(btnDiagnose0, "cell 1 2,growx");
+		diagnosePanel.add(btnDiagnose1, "cell 1 3,growx");
+		diagnosePanel.add(btnDiagnose2, "cell 1 4,growx");
+		diagnosePanel.add(btnDiagnose3, "cell 1 5,growx");
+		diagnosePanel.add(btnDiagnose4, "cell 1 6,growx");
+		diagnosePanel.add(btnDiagnose5, "cell 1 7,growx");
+		diagnosePanel.add(btnDiagnose6, "cell 1 8,growx");
+		diagnosePanel.add(btnDiagnose7, "cell 1 9,growx");
+		diagnosePanel.add(btnDiagnose8, "cell 1 10,growx");
+		diagnosePanel.add(btnDiagnose9, "cell 1 11,growx");
 
 		UltraschallPanel.add(lblUltraschall, "cell 1 0");
 		UltraschallPanel.add(btnUZurueck, "cell 0 0");
@@ -616,25 +777,26 @@ public class Medizin extends JPanel {
 		keinErfolgPanel.add(btnKZurueck, "cell 0 0");
 		keinErfolgPanel.add(lblKeinErfolg, "cell 1 1");
 
-		mailPanel.add(lblPosteingang, "cell 0 1 2 1,growx,aligny top");
+		mailPanel.add(lblPosteingang, "cell 0 0 2 1,growx,aligny top");
 
-		mailPanel.add(btnNewButton, "cell 0 2");
-		lblMailInhalt.setVerticalAlignment(SwingConstants.TOP);
+		mailPanel.add(mailButtonContainer, "cell 0 1,grow");
+		mailButtonContainer.setLayout(new BorderLayout(0, 0));
 
-		mailPanel.add(lblMailInhalt, "cell 1 2 1 14,grow");
-		mailPanel.add(btnNewButton_1, "cell 0 3");
-		mailPanel.add(btnNewButton_2, "cell 0 4");
-		mailPanel.add(btnNewButton_3, "cell 0 5");
-		mailPanel.add(btnNewButton_4, "cell 0 6");
-		mailPanel.add(btnNewButton_5, "cell 0 7");
-		mailPanel.add(btnNewButton_6, "cell 0 8");
-		mailPanel.add(btnNewButton_7, "cell 0 9");
-		mailPanel.add(btnNewButton_8, "cell 0 10");
-		mailPanel.add(btnNewButton_9, "cell 0 11");
-		mailPanel.add(btnNewButton_10, "cell 0 12");
-		mailPanel.add(btnNewButton_11, "cell 0 13");
-		mailPanel.add(btnNewButton_12, "cell 0 14");
-		mailPanel.add(btnNewButton_13, "cell 0 15");
+		mailButtonContainer.add(scrollPane, BorderLayout.CENTER);
+
+		scrollPane.setViewportView(mailButtonPanel);
+		mailButtonPanel.setLayout(new GridLayout(9, 1, 0, 0));
+		mailTextPanel.setBackground(new Color(255, 239, 213));
+
+		mailPanel.add(mailTextPanel, "cell 1 1,grow");
+		mailTextPanel.setLayout(new BorderLayout(0, 0));
+		scrollPane_1.setBackground(new Color(255, 239, 213));
+
+		mailTextPanel.add(scrollPane_1, BorderLayout.CENTER);
+		txtrMailtext.setText(" ");
+
+		scrollPane_1.setViewportView(txtrMailtext);
+
 	}
 
 	private void addActionListeners() {
@@ -663,6 +825,30 @@ public class Medizin extends JPanel {
 			}
 		});
 
+		btnPosteingang.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String json = spiel.backendSpiel.getMailsArzt();
+				Posteingang posteingang = gson.fromJson(json, Posteingang.class);
+				mails = posteingang.getMailliste();
+
+				mailButtonPanel.removeAll();
+				for (int i = 0; mailButtons.length < i || i < mails.size(); i++) {
+					mailButtons[i].setVisible(true);
+					mailButtons[i].setHorizontalAlignment(SwingConstants.LEFT);
+
+					mailButtons[i].setText(
+							"<html>" + mails.get(i).getAbsender() + "<br>" + mails.get(i).getBetreff() + "</html>");
+					mailButtonPanel.add(mailButtons[i]);
+				}
+				for (int i = 0; i < (8 - mails.size()); i++) {
+					mailButtonPanel.add(new Label(" "));
+				}
+				((CardLayout) panelContainer.getLayout()).show(panelContainer, MailPanelName);
+			}
+		});
+		addMailButtonBehavior();
 		btnPatientHereinbitten.addActionListener(new ActionListener() {
 
 			@Override
@@ -689,6 +875,7 @@ public class Medizin extends JPanel {
 					lblPatientBild.setIcon(null);
 					btnDiagnose.setVisible(false);
 				}
+				buttonPanel.repaint();
 				((CardLayout) panelContainer.getLayout()).show(panelContainer, infos);
 			}
 		});
@@ -948,18 +1135,25 @@ public class Medizin extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (inZelt != null) {
 					String json = spiel.backendSpiel.getAlleKrankheiten();
-					Krankheiten krankheiten = gson.fromJson(json, Krankheiten.class);
+					krankheiten = gson.fromJson(json, Krankheiten.class);
 
-					btnDiagnose0.setText("MASERN");
-					btnDiagnose1.setText("CHOLERA");
-					btnDiagnose2.setText("BILHARZIOSE");
-					btnDiagnose3.setText("HIV");
-					btnDiagnose4.setText("HEP_A");
-					btnDiagnose5.setText("HEP_B");
-					btnDiagnose6.setText("TETANUS");
-					btnDiagnose7.setText("GELBFIEBER");
-					btnDiagnose8.setText("DENGUE_FIEBER");
-					btnDiagnose9.setText("HAUTLEISHMANIASIS");
+					btnDiagnose4.setVisible(false);
+					btnDiagnose5.setVisible(false);
+					btnDiagnose6.setVisible(false);
+					btnDiagnose7.setVisible(false);
+					btnDiagnose8.setVisible(false);
+					btnDiagnose9.setVisible(false);
+
+					btnDiagnose0.setText("Masern");
+					btnDiagnose1.setText("Hepatitis A");
+					btnDiagnose2.setText("Hepatitis B");
+					btnDiagnose3.setText("Hautleishmaniose");
+					// btnDiagnose4.setText(krankheiten.getKrankheiten()[4].getName());
+					// btnDiagnose5.setText(krankheiten.getKrankheiten()[5].getName());
+					// btnDiagnose6.setText(krankheiten.getKrankheiten()[6].getName());
+					// btnDiagnose7.setText(krankheiten.getKrankheiten()[7].getName());
+					// btnDiagnose8.setText(krankheiten.getKrankheiten()[8].getName());
+					// btnDiagnose9.setText(krankheiten.getKrankheiten()[9].getName());
 
 					((CardLayout) panelContainer.getLayout()).show(panelContainer, diagnose);
 				}
@@ -976,63 +1170,63 @@ public class Medizin extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setDiagnose(2);
+				setDiagnose(5);
 			}
 		});
 		btnDiagnose2.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setDiagnose(3);
+				setDiagnose(6);
 			}
 		});
 		btnDiagnose3.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setDiagnose(4);
+				setDiagnose(10);
 			}
 		});
 		btnDiagnose4.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setDiagnose(5);
+				setDiagnose(krankheiten.getKrankheiten()[4].getID());
 			}
 		});
 		btnDiagnose5.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setDiagnose(6);
+				setDiagnose(krankheiten.getKrankheiten()[5].getID());
 			}
 		});
 		btnDiagnose6.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setDiagnose(7);
+				setDiagnose(krankheiten.getKrankheiten()[6].getID());
 			}
 		});
 		btnDiagnose7.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setDiagnose(8);
+				setDiagnose(krankheiten.getKrankheiten()[7].getID());
 			}
 		});
 		btnDiagnose8.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setDiagnose(9);
+				setDiagnose(krankheiten.getKrankheiten()[8].getID());
 			}
 		});
 		btnDiagnose9.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setDiagnose(10);
+				setDiagnose(krankheiten.getKrankheiten()[9].getID());
 			}
 		});
 		btnDZurueck.addActionListener(new ActionListener() {
@@ -1061,6 +1255,121 @@ public class Medizin extends JPanel {
 			}
 		});
 
+	}
+
+	private void addMailButtonBehavior() {
+		btnMail1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Mail temp = mails.get(0);
+				txtrMailtext.setText(temp.toString());
+			}
+		});
+		btnMail2.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Mail temp = mails.get(1);
+				txtrMailtext.setText(temp.toString());
+			}
+		});
+		btnMail3.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Mail temp = mails.get(2);
+				txtrMailtext.setText(temp.toString());
+			}
+		});
+		btnMail4.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Mail temp = mails.get(3);
+				txtrMailtext.setText(temp.toString());
+			}
+		});
+		btnMail5.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Mail temp = mails.get(4);
+				txtrMailtext.setText(temp.toString());
+			}
+		});
+		btnMail6.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Mail temp = mails.get(5);
+				txtrMailtext.setText(temp.toString());
+			}
+		});
+		btnMail7.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Mail temp = mails.get(6);
+				txtrMailtext.setText(temp.toString());
+			}
+		});
+		btnMail8.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Mail temp = mails.get(7);
+				txtrMailtext.setText(temp.toString());
+			}
+		});
+		btnMail9.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Mail temp = mails.get(8);
+				txtrMailtext.setText(temp.toString());
+			}
+		});
+		btnMail10.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Mail temp = mails.get(9);
+				txtrMailtext.setText(temp.toString());
+			}
+		});
+		btnMail11.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Mail temp = mails.get(10);
+				txtrMailtext.setText(temp.toString());
+			}
+		});
+		btnMail12.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Mail temp = mails.get(11);
+				txtrMailtext.setText(temp.toString());
+			}
+		});
+		btnMail13.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Mail temp = mails.get(12);
+				txtrMailtext.setText(temp.toString());
+			}
+		});
+		btnMail14.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Mail temp = mails.get(13);
+				txtrMailtext.setText(temp.toString());
+			}
+		});
 	}
 
 	private void zuruek() {

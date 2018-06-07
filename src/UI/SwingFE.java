@@ -90,11 +90,7 @@ public class SwingFE {
 					spiel.backendSpiel.neuesSpiel();
 					replacePanel(startPanel);
 				} else {
-					UIManager.put("OptionPane.buttonFont",
-							new FontUIResource(new Font("Tahoma", Font.PLAIN, FONT_SIZE)));
-					JLabel label = new JLabel("Sie sind mit keinem Server verbuden.");
-					label.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-					JOptionPane.showMessageDialog(null, label, "Fehler", JOptionPane.PLAIN_MESSAGE);
+					serverPanel.getLblFehler().setText("Sie sind mit keinem Server verbuden.");
 				}
 			}
 		});
