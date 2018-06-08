@@ -342,6 +342,7 @@ public class Wirtschaft extends JPanel {
 		btnZurcuekSponsor.setForeground(Color.WHITE);
 
 		btnZurcuekSponsor.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnZurueck.setForeground(Color.WHITE);
 
 		btnZurueck.setBorder(new LineBorder(Color.GRAY, 2, true));
 		btnZurueck.setBackground(Color.DARK_GRAY);
@@ -560,20 +561,20 @@ public class Wirtschaft extends JPanel {
 		InterviewPartnerPanel.add(btnBeginneInterview, "cell 2 2");
 		InterviewPartnerPanel.add(btnBeginneInterview_1, "cell 2 4");
 		InterviewPartnerPanel.add(btnBeginneInterview_2, "cell 2 6");
-		InterviewPanel.setLayout(new MigLayout("", "[1215px]", "[][][][403.00][37px][45px][45px][45px][]"));
+		InterviewPanel.setLayout(new MigLayout("", "[394.00px][904.00]", "[][][][403.00][37px][45px][45px][45px][]"));
 
-		InterviewPanel.add(lblInterview, "cell 0 0,growx,aligny top");
+		InterviewPanel.add(lblInterview, "cell 0 0 2 1,growx,aligny top");
 
 		InterviewPanel.add(lblPartnerName, "cell 0 1,grow");
 
 		InterviewPanel.add(lblStatus, "cell 0 2");
-		InterviewPanel.add(lblFrage, "cell 0 4,growx,aligny top");
+		InterviewPanel.add(lblFrage, "cell 0 4 2 1,growx,aligny top");
 
-		InterviewPanel.add(btnAntwort, "cell 0 5,growx,aligny top");
-		InterviewPanel.add(btnAntwort_1, "cell 0 6,growx,aligny top");
-		InterviewPanel.add(btnAntwort_2, "cell 0 7,growx,aligny top");
+		InterviewPanel.add(btnAntwort, "cell 0 5 2 1,growx,aligny top");
+		InterviewPanel.add(btnAntwort_1, "cell 0 6 2 1,growx,aligny top");
+		InterviewPanel.add(btnAntwort_2, "cell 0 7 2 1,growx,aligny top");
 
-		InterviewPanel.add(btnAntwort_3, "cell 0 8,growx");
+		InterviewPanel.add(btnAntwort_3, "cell 0 8 2 1,growx");
 
 		SponsorenPanel.add(lblMglicheSponsoren, "cell 1 0 4 1,growx");
 		SponsorenPanel.add(lblSponsor1, "cell 1 2");
@@ -709,7 +710,6 @@ public class Wirtschaft extends JPanel {
 					lblEinleitung.setText("");
 
 					String json = spiel.backendSpiel.haltePressekonferenz();
-					System.out.println(json);
 					Pressekonferenz kon = gson.fromJson(json, Pressekonferenz.class);
 					if (!"fehler".equals(kon.getStatus().toLowerCase())) {
 						lblThema.setText(kon.getThema());
@@ -761,9 +761,7 @@ public class Wirtschaft extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String json = spiel.backendSpiel.getInterviewPartner();
-				System.out.println(json);
 				partnerListe = gson.fromJson(json, Partner.class);
-				System.out.println(partnerListe.interviewPartner);
 				lblPartner.setText(partnerListe.interviewPartner.get(0).toString());
 				// lblPartner_1.setText(partnerListe.partnerListe.get(1).toString());
 				// lblPartner_2.setText(partnerListe.partnerListe.get(2).toString());
@@ -916,12 +914,12 @@ public class Wirtschaft extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String mailString = spiel.backendSpiel.getMoeglicheSendeMails();
-				System.out.println(mailString);
+
 				btnLob.setVisible(true);
 				btnAbmahnung.setVisible(true);
 				// btnGert.setVisible(true);
 
-				txtrText.setText(Mails.LOB.name() + ":\n" + Mails.LOB.getMailText() + " \n" + Mails.ABMAHNUNG.name()
+				txtrText.setText(Mails.LOB.name() + ":\n" + Mails.LOB.getMailText() + " \n\n\n" + Mails.ABMAHNUNG.name()
 						+ ":\n" + Mails.ABMAHNUNG.getMailText() + "\n");
 				((CardLayout) panelContainer.getLayout()).show(panelContainer, TextPanelName);
 			}
@@ -980,6 +978,8 @@ public class Wirtschaft extends JPanel {
 		btnBudgetbreicht.setVisible(false);
 		btnArztbreicht.setVisible(false);
 
+		btnBeginneInterview.setVisible(true);
+
 	}
 
 	private void addSponsorActionListeners() {
@@ -990,8 +990,61 @@ public class Wirtschaft extends JPanel {
 				String json = spiel.backendSpiel.getSponsoren();
 				sponsoren = gson.fromJson(json, Sponsoren.class);
 
+				if (sponsoren.getSponsoren().size() == 4) {
+					lblSponsor1.setText(sponsoren.getSponsoren().get(0).toString());
+
+					if (sponsoren.getSponsoren().get(0).isAngeworben()) {
+						btnSponsorAnwerben1.setVisible(false);
+					} else {
+						btnSponsorAnwerben1.setVisible(true);
+					}
+					lblSponsor2.setText(sponsoren.getSponsoren().get(1).toString());
+					if (sponsoren.getSponsoren().get(1).isAngeworben()) {
+						btnSponsorAnwerben2.setVisible(false);
+					} else {
+						btnSponsorAnwerben2.setVisible(true);
+					}
+					lblSponsor3.setText(sponsoren.getSponsoren().get(2).toString());
+					if (sponsoren.getSponsoren().get(2).isAngeworben()) {
+						btnSponsorAnwerben3.setVisible(false);
+					} else {
+						btnSponsorAnwerben3.setVisible(true);
+					}
+					lblSponsor4.setText(sponsoren.getSponsoren().get(3).toString());
+					if (sponsoren.getSponsoren().get(3).isAngeworben()) {
+						btnSponsorAnwerben4.setVisible(false);
+					} else {
+						btnSponsorAnwerben4.setVisible(true);
+					}
+					lblSponsor5.setVisible(false);
+					lblSponsor6.setVisible(false);
+					lblSponsor7.setVisible(false);
+					lblSponsor8.setVisible(false);
+					lblSponsor9.setVisible(false);
+					lblSponsor10.setVisible(false);
+					lblSponsor11.setVisible(false);
+					lblSponsor12.setVisible(false);
+					lblSponsor13.setVisible(false);
+					lblSponsor14.setVisible(false);
+					lblSponsor1.setFont(new Font("Tahoma", Font.PLAIN, 28));
+					lblSponsor2.setFont(new Font("Tahoma", Font.PLAIN, 28));
+					lblSponsor3.setFont(new Font("Tahoma", Font.PLAIN, 28));
+					lblSponsor4.setFont(new Font("Tahoma", Font.PLAIN, 28));
+					btnSponsorAnwerben5.setVisible(false);
+					btnSponsorAnwerben6.setVisible(false);
+					btnSponsorAnwerben7.setVisible(false);
+					btnSponsorAnwerben8.setVisible(false);
+					btnSponsorAnwerben9.setVisible(false);
+					btnSponsorAnwerben10.setVisible(false);
+					btnSponsorAnwerben11.setVisible(false);
+					btnSponsorAnwerben12.setVisible(false);
+					btnSponsorAnwerben13.setVisible(false);
+					btnSponsorAnwerben14.setVisible(false);
+				}
+
 				if (sponsoren.getSponsoren().size() == 14) {
 					lblSponsor1.setText(sponsoren.getSponsoren().get(0).toString());
+
 					if (sponsoren.getSponsoren().get(0).isAngeworben()) {
 						btnSponsorAnwerben1.setVisible(false);
 					} else {
@@ -1226,14 +1279,18 @@ public class Wirtschaft extends JPanel {
 		Interview interview = gson.fromJson(json, Interview.class);
 		if (!"ende".equals(interview.getStatus().toLowerCase())) {
 			interviewLauft = true;
-			lblPartnerName.setText(interview.getPartnerName());
-			System.out.println(interview.getPartnerName());
-			lblStatus.setText(interview.getStatus());
-			lblFrage.setText(interview.getFrage());
-			btnAntwort.setText(interview.getAntworten()[0]);
-			btnAntwort_1.setText(interview.getAntworten()[1]);
-			btnAntwort_2.setText(interview.getAntworten()[2]);
-			btnAntwort_3.setText(interview.getAntworten()[3]);
+			lblPartnerName.setText("<html>" + interview.getPartnerName() + "</html>");
+			lblStatus.setText("<html>" + interview.getStatus() + "</html>");
+			lblFrage.setText("<html>" + interview.getFrage() + "</html>");
+			btnAntwort.setText("<html>" + interview.getAntworten()[0] + "</html>");
+			btnAntwort_1.setText("<html>" + interview.getAntworten()[1] + "</html>");
+			btnAntwort_2.setText("<html>" + interview.getAntworten()[2] + "</html>");
+			btnAntwort_3.setText("<html>" + interview.getAntworten()[3] + "</html>");
+			btnBeginneInterview.setVisible(false);
+			btnAntwort.setVisible(true);
+			btnAntwort_1.setVisible(true);
+			btnAntwort_2.setVisible(true);
+			btnAntwort_3.setVisible(true);
 		} else {
 			interviewLauft = false;
 			lblPartnerName.setText("");
@@ -1250,16 +1307,15 @@ public class Wirtschaft extends JPanel {
 	private void interviewAntwort(int antwort) {
 		String json = spiel.backendSpiel.interview(partnerListe.interviewPartner.get(0).getId(), antwort);
 		Interview interview = gson.fromJson(json, Interview.class);
-		System.out.println(interview.getPartnerName());
 		if (!"ende".equals(interview.getFrage().toLowerCase())) {
 			interviewLauft = true;
-			lblPartnerName.setText(interview.getPartnerName());
-			lblStatus.setText(interview.getStatus());
-			lblFrage.setText(interview.getFrage());
-			btnAntwort.setText(interview.getAntworten()[0]);
-			btnAntwort_1.setText(interview.getAntworten()[1]);
-			btnAntwort_2.setText(interview.getAntworten()[2]);
-			btnAntwort_3.setText(interview.getAntworten()[3]);
+			lblPartnerName.setText("<html>" + interview.getPartnerName() + "</html>");
+			lblStatus.setText("<html>" + interview.getStatus() + "</html>");
+			lblFrage.setText("<html>" + interview.getFrage() + "</html>");
+			btnAntwort.setText("<html>" + interview.getAntworten()[0] + "</html>");
+			btnAntwort_1.setText("<html>" + interview.getAntworten()[1] + "</html>");
+			btnAntwort_2.setText("<html>" + interview.getAntworten()[2] + "</html>");
+			btnAntwort_3.setText("<html>" + interview.getAntworten()[3] + "</html>");
 		} else {
 			interviewLauft = false;
 			lblPartnerName.setText("");

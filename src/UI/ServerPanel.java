@@ -110,7 +110,7 @@ public class ServerPanel extends JPanel {
 				verbindeServer(serveradresse);
 			}
 		});
-		// btnLokal.setVisible(false);
+		btnLokal.setVisible(false);
 		btnLokal.addActionListener(new ActionListener() {
 
 			@Override

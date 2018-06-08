@@ -142,7 +142,7 @@ public class SwingFE {
 					medizinPanel.reset();
 					replacePanel(startPanel);
 				} else {
-					System.out.println("Kein Spiel");
+					addLog("Es gibt noch Kein Spiel.");
 				}
 
 			}
@@ -256,7 +256,6 @@ public class SwingFE {
 
 					startPanel.resetFields();
 					medizinPanel.setText(temp.ueberschrift + "\n" + getFormattedText(temp.text));
-					System.out.println(getFormattedText(temp.text));
 					replacePanel(medizinPanel);
 				}
 

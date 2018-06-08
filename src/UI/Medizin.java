@@ -256,7 +256,7 @@ public class Medizin extends JPanel {
 		infoPanel.setBackground(new Color(255, 239, 213));
 		add(infoPanel, "cell 2 1");
 		buttonPanel.setOpaque(false);
-		infoPanel.setOpaque(false);
+		// infoPanel.setOpaque(false);
 
 		setLayout();
 
@@ -335,7 +335,7 @@ public class Medizin extends JPanel {
 		lblPatientBild.setMaximumSize(new Dimension(250, 250));
 		lblPatientBild.setVerticalAlignment(SwingConstants.TOP);
 
-		panel.add(lblPatientBild, "cell 1 0,alignx left,aligny top");
+		panel.add(lblPatientBild, "cell 1 0,alignx right,aligny top");
 
 		btnAnamnese.setVisible(false);
 		btnAnamnese.setForeground(Color.WHITE);
@@ -405,7 +405,7 @@ public class Medizin extends JPanel {
 		infoPanel.setLayout(new MigLayout("", "[386.00]", "[][206.00][36.00][205.00][41.00][252.00]"));
 
 		dialogPanel.setLayout(new MigLayout("", "[1225]", "[24.00][500][][][][][]"));
-		panel.setLayout(new MigLayout("", "[960][265]", "[830]"));
+		panel.setLayout(new MigLayout("", "[630.00][436.00]", "[830]"));
 		roentgenPanel.setLayout(new MigLayout("", "[123][1102]", "[][772.00]"));
 		diagnosePanel.setLayout(new MigLayout("", "[123][464.00][481.00]", "[][][][][][][][][][][][]"));
 		UltraschallPanel.setLayout(new MigLayout("", "[123][1102]", "[47.00][783.00]"));
@@ -531,6 +531,9 @@ public class Medizin extends JPanel {
 		btnRZurueck.setBackground(Color.DARK_GRAY);
 
 		btnEZurueck.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnEZurueck.setForeground(Color.WHITE);
+		btnEZurueck.setBorder(new LineBorder(Color.GRAY, 2, true));
+		btnEZurueck.setBackground(Color.DARK_GRAY);
 		btnKZurueck.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnKZurueck.setForeground(Color.WHITE);
 		btnKZurueck.setBorder(new LineBorder(Color.GRAY, 2, true));
@@ -548,6 +551,10 @@ public class Medizin extends JPanel {
 		}
 		txtrMailtext.setBackground(new Color(255, 239, 213));
 		txtrMailtext.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		txtrMailtext.setWrapStyleWord(true);
+		txtrMailtext.setEditable(false);
+		txtrMailtext.setLineWrap(true);
+		txtrMailtext.setFocusable(false);
 		txtrMailtext.setOpaque(true);
 
 		lblName.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
@@ -780,12 +787,12 @@ public class Medizin extends JPanel {
 		mailPanel.add(lblPosteingang, "cell 0 0 2 1,growx,aligny top");
 
 		mailPanel.add(mailButtonContainer, "cell 0 1,grow");
-		mailButtonContainer.setLayout(new BorderLayout(0, 0));
+		mailButtonContainer.setLayout(new GridLayout(1, 0, 0, 0));
 
-		mailButtonContainer.add(scrollPane, BorderLayout.CENTER);
+		mailButtonContainer.add(scrollPane);
 
 		scrollPane.setViewportView(mailButtonPanel);
-		mailButtonPanel.setLayout(new GridLayout(9, 1, 0, 0));
+		mailButtonPanel.setLayout(new GridLayout(0, 1, 0, 0));
 		mailTextPanel.setBackground(new Color(255, 239, 213));
 
 		mailPanel.add(mailTextPanel, "cell 1 1,grow");
