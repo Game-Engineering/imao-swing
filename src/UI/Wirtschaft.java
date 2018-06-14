@@ -46,6 +46,7 @@ public class Wirtschaft extends JPanel {
 	private static final String MailPanelName = "MailPanel";
 	private static final String PressekonferenzPanelName = "PressekonferenzPanel";
 	private final Spiel spiel;
+	private int PartnerID;
 
 	private List<Mail> mails;
 	private Sponsoren sponsoren;
@@ -247,8 +248,8 @@ public class Wirtschaft extends JPanel {
 				.addGroup(gl_TextPanel.createSequentialGroup().addContainerGap()
 						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 711, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(136, Short.MAX_VALUE)));
-		txtrText.setBackground(new Color(0, 0, 204));
-		txtrText.setForeground(Color.WHITE);
+		txtrText.setBackground(Color.WHITE);
+		txtrText.setForeground(Color.BLACK);
 		scrollPane.setViewportView(txtrText);
 
 		txtrText.setWrapStyleWord(true);
@@ -256,14 +257,14 @@ public class Wirtschaft extends JPanel {
 		txtrText.setLineWrap(true);
 		txtrText.setFocusable(false);
 		txtrText.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		textArea.setBackground(new Color(0, 0, 204));
-		textArea.setForeground(Color.WHITE);
+		textArea.setBackground(Color.WHITE);
+		textArea.setForeground(Color.BLACK);
 
 		textArea.setWrapStyleWord(true);
 		textArea.setEditable(false);
 		textArea.setLineWrap(true);
 		textArea.setFocusable(false);
-		TextPanel.setBackground(new Color(0, 0, 153));
+		TextPanel.setBackground(Color.LIGHT_GRAY);
 
 		TextPanel.setLayout(gl_TextPanel);
 
@@ -325,15 +326,19 @@ public class Wirtschaft extends JPanel {
 		btnBeginneInterview_2.setBorder(new LineBorder(Color.GRAY, 2, true));
 		btnBeginneInterview_2.setBackground(Color.DARK_GRAY);
 		btnBeginneInterview_2.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnAntwort.setHorizontalAlignment(SwingConstants.LEFT);
 		btnAntwort.setForeground(Color.WHITE);
 		btnAntwort.setBackground(Color.DARK_GRAY);
 		btnAntwort.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnAntwort_1.setHorizontalAlignment(SwingConstants.LEFT);
 		btnAntwort_1.setBackground(Color.DARK_GRAY);
 		btnAntwort_1.setForeground(Color.WHITE);
 		btnAntwort_1.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnAntwort_2.setHorizontalAlignment(SwingConstants.LEFT);
 		btnAntwort_2.setForeground(Color.WHITE);
 		btnAntwort_2.setBackground(Color.DARK_GRAY);
 		btnAntwort_2.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnAntwort_3.setHorizontalAlignment(SwingConstants.LEFT);
 		btnAntwort_3.setForeground(Color.WHITE);
 		btnAntwort_3.setBackground(Color.DARK_GRAY);
 		btnAntwort_3.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
@@ -421,7 +426,7 @@ public class Wirtschaft extends JPanel {
 		lblInterview.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		lblFrage.setBackground(Color.GRAY);
 		lblFrage.setForeground(Color.WHITE);
-		lblFrage.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFrage.setHorizontalAlignment(SwingConstants.LEFT);
 		lblFrage.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 		btnSponsoren.setBackground(Color.DARK_GRAY);
 		btnSponsoren.setForeground(Color.WHITE);
@@ -478,7 +483,7 @@ public class Wirtschaft extends JPanel {
 		lblArzt.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 
 		txtrText.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
-		lblPosteingang.setForeground(Color.WHITE);
+		lblPosteingang.setForeground(Color.BLACK);
 
 		lblPosteingang.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
 
@@ -500,14 +505,17 @@ public class Wirtschaft extends JPanel {
 		lblPresseFrage.setForeground(Color.WHITE);
 		lblPresseFrage.setOpaque(true);
 		lblPresseFrage.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnPresseAntwort1.setHorizontalAlignment(SwingConstants.LEFT);
 		btnPresseAntwort1.setForeground(Color.WHITE);
 		btnPresseAntwort1.setBorder(new LineBorder(Color.GRAY, 2, true));
 		btnPresseAntwort1.setBackground(Color.DARK_GRAY);
 		btnPresseAntwort1.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnPresseAntwort2.setHorizontalAlignment(SwingConstants.LEFT);
 		btnPresseAntwort2.setForeground(Color.WHITE);
 		btnPresseAntwort2.setBorder(new LineBorder(Color.GRAY, 2, true));
 		btnPresseAntwort2.setBackground(Color.DARK_GRAY);
 		btnPresseAntwort2.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
+		btnPresseAntwort3.setHorizontalAlignment(SwingConstants.LEFT);
 		btnPresseAntwort3.setForeground(Color.WHITE);
 		btnPresseAntwort3.setBorder(new LineBorder(Color.GRAY, 2, true));
 		btnPresseAntwort3.setBackground(Color.DARK_GRAY);
@@ -527,7 +535,7 @@ public class Wirtschaft extends JPanel {
 		panelContainer.add(InterviewPanel, InterviewPanelName);
 		panelContainer.add(SponsorenPanel, SponsorenPanelName);
 		panelContainer.add(SponsorAnwerbenPanel, SponsorAnwerbenPanelName);
-		mailPanel.setBackground(new Color(0, 0, 153));
+		mailPanel.setBackground(Color.LIGHT_GRAY);
 		panelContainer.add(mailPanel, MailPanelName);
 		pressrkonferenzPanel.setBackground(new Color(0, 0, 153));
 		panelContainer.add(pressrkonferenzPanel, PressekonferenzPanelName);
@@ -539,10 +547,10 @@ public class Wirtschaft extends JPanel {
 
 		pressrkonferenzPanel.add(lblThema, "cell 0 1,grow");
 		lblEinleitung.setVerticalAlignment(SwingConstants.TOP);
-		lblEinleitung.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEinleitung.setHorizontalAlignment(SwingConstants.LEFT);
 
 		pressrkonferenzPanel.add(lblEinleitung, "cell 0 2,grow");
-		lblPresseFrage.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPresseFrage.setHorizontalAlignment(SwingConstants.LEFT);
 
 		pressrkonferenzPanel.add(lblPresseFrage, "cell 0 3,growx");
 
@@ -561,7 +569,7 @@ public class Wirtschaft extends JPanel {
 		InterviewPartnerPanel.add(btnBeginneInterview, "cell 2 2");
 		InterviewPartnerPanel.add(btnBeginneInterview_1, "cell 2 4");
 		InterviewPartnerPanel.add(btnBeginneInterview_2, "cell 2 6");
-		InterviewPanel.setLayout(new MigLayout("", "[394.00px][904.00]", "[][][][403.00][37px][45px][45px][45px][]"));
+		InterviewPanel.setLayout(new MigLayout("", "[441.00px][904.00]", "[][][][403.00][37px][45px][45px][45px][]"));
 
 		InterviewPanel.add(lblInterview, "cell 0 0 2 1,growx,aligny top");
 
@@ -666,11 +674,11 @@ public class Wirtschaft extends JPanel {
 		mailPanel.add(mailButtonContainerPanel, "flowx,cell 0 2,grow");
 		mailButtonContainerPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		mailButtonContainerPanel.add(scrollPane_2);
-		mailButtonPanel.setBackground(new Color(0, 0, 153));
+		mailButtonPanel.setBackground(Color.LIGHT_GRAY);
 
 		scrollPane_2.setViewportView(mailButtonPanel);
 		mailButtonPanel.setLayout(new GridLayout(0, 1, 0, 0));
-		lblEmpty.setBackground(new Color(0, 0, 153));
+		lblEmpty.setBackground(Color.LIGHT_GRAY);
 		lblEmpty.setMinimumSize(new Dimension(57, 420));
 		lblEmpty.setVerticalAlignment(SwingConstants.TOP);
 
@@ -762,9 +770,24 @@ public class Wirtschaft extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String json = spiel.backendSpiel.getInterviewPartner();
 				partnerListe = gson.fromJson(json, Partner.class);
-				lblPartner.setText(partnerListe.interviewPartner.get(0).toString());
-				// lblPartner_1.setText(partnerListe.partnerListe.get(1).toString());
-				// lblPartner_2.setText(partnerListe.partnerListe.get(2).toString());
+				if (partnerListe.interviewPartner.size() >= 1) {
+					lblPartner.setText(partnerListe.interviewPartner.get(0).toString());
+				} else {
+					lblPartner.setText("Es gibt Keine Interviewpartner mehr.");
+					btnBeginneInterview.setVisible(false);
+				}
+				if (partnerListe.interviewPartner.size() >= 2) {
+					lblPartner_1.setText(partnerListe.interviewPartner.get(1).toString());
+				} else {
+					lblPartner_1.setText(" ");
+					btnBeginneInterview_1.setVisible(false);
+				}
+				if (partnerListe.interviewPartner.size() >= 3) {
+					lblPartner_2.setText(partnerListe.interviewPartner.get(2).toString());
+				} else {
+					lblPartner_2.setText(" ");
+					btnBeginneInterview_2.setVisible(false);
+				}
 				((CardLayout) panelContainer.getLayout()).show(panelContainer, InterviewPartnerPanelName);
 			}
 		});
@@ -973,8 +996,8 @@ public class Wirtschaft extends JPanel {
 		btnLob.setVisible(false);
 		btnAbmahnung.setVisible(false);
 		btnGert.setVisible(false);
-		btnBeginneInterview_1.setVisible(false);
-		btnBeginneInterview_2.setVisible(false);
+		// btnBeginneInterview_1.setVisible(false);
+		// btnBeginneInterview_2.setVisible(false);
 		btnBudgetbreicht.setVisible(false);
 		btnArztbreicht.setVisible(false);
 
@@ -1255,6 +1278,7 @@ public class Wirtschaft extends JPanel {
 				Posteingang post = gson.fromJson(json, Posteingang.class);
 				mails = post.getMailliste();
 				mailButtonPanel.removeAll();
+				textArea.setText(" ");
 				for (int i = 0; mailButtons.length < i || i < mails.size(); i++) {
 					mailButtons[i].setVisible(true);
 					mailButtons[i].setHorizontalAlignment(SwingConstants.LEFT);
@@ -1275,6 +1299,7 @@ public class Wirtschaft extends JPanel {
 
 	private void beginneInterview(int id) {
 		background = new ImageIcon(this.getClass().getResource("/Bilder/Interview1.png")).getImage();
+		PartnerID = id;
 		String json = spiel.backendSpiel.interview(id);
 		Interview interview = gson.fromJson(json, Interview.class);
 		if (!"ende".equals(interview.getStatus().toLowerCase())) {
@@ -1286,7 +1311,7 @@ public class Wirtschaft extends JPanel {
 			btnAntwort_1.setText("<html>" + interview.getAntworten()[1] + "</html>");
 			btnAntwort_2.setText("<html>" + interview.getAntworten()[2] + "</html>");
 			btnAntwort_3.setText("<html>" + interview.getAntworten()[3] + "</html>");
-			btnBeginneInterview.setVisible(false);
+			// btnBeginneInterview.setVisible(false);
 			btnAntwort.setVisible(true);
 			btnAntwort_1.setVisible(true);
 			btnAntwort_2.setVisible(true);
@@ -1305,7 +1330,7 @@ public class Wirtschaft extends JPanel {
 	}
 
 	private void interviewAntwort(int antwort) {
-		String json = spiel.backendSpiel.interview(partnerListe.interviewPartner.get(0).getId(), antwort);
+		String json = spiel.backendSpiel.interview(PartnerID, antwort);
 		Interview interview = gson.fromJson(json, Interview.class);
 		if (!"ende".equals(interview.getFrage().toLowerCase())) {
 			interviewLauft = true;

@@ -49,7 +49,7 @@ public class ServerPanel extends JPanel {
 		setPreferredSize(new Dimension(2000, 930));
 		setLayout(new MigLayout("", "[600][800][600]", "[37px][49.00][176.00][35.00px][39.00][37px][]"));
 
-		lblHead = new JLabel("Bitte geben Sie die Adresse des Servers auf dem Sie Spielen m\u00F6chten ein.");
+		lblHead = new JLabel("Bitte geben Sie die Adresse des Servers, auf dem Sie spielen m\u00F6chten, ein.");
 		lblHead.setForeground(Color.WHITE);
 		lblHead.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHead.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -110,7 +110,7 @@ public class ServerPanel extends JPanel {
 				verbindeServer(serveradresse);
 			}
 		});
-		btnLokal.setVisible(false);
+		// btnLokal.setVisible(false);
 		btnLokal.addActionListener(new ActionListener() {
 
 			@Override
@@ -138,7 +138,7 @@ public class ServerPanel extends JPanel {
 		} else {
 			backendSpiel = null;
 			lblFehler.setText(
-					"Server konnte nicht verbunden werden, bitte überprüfen ob der Server auf Ihren System gestartet ist.");
+					"Server konnte nicht verbunden werden. Bitte überprüfen Sie, ob der Server auf Ihrem System gestartet ist.");
 		}
 	}
 

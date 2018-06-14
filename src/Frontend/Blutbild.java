@@ -5,8 +5,8 @@ public class Blutbild {
 	private String name;
 
 	private float Haemoglobinkonzentration;
-	private float Haemoglobinkonzentration_min;
-	private float Haemoglobinkonzentration_max;
+	private float Haemoglobinkonzentration_min_normal;
+	private float Haemoglobinkonzentration_max_normal;
 	private float Haemoglobinkonzentration_min_veringert;
 	private float Haemoglobinkonzentration_max_veringert;
 	private float Haemoglobinkonzentration_min_erhoeht;
@@ -26,8 +26,8 @@ public class Blutbild {
 	private float Thrombozyten_min_erhoeht;
 	private float Thrombozyten_max_erhoeht;
 	private float Haematokrit;
-	private float Haematokrit_min;
-	private float Haematokrit_max;
+	private float Haematokrit_min_normal;
+	private float Haematokrit_max_normal;
 	private float Haematokrit_min_veringert;
 	private float Haematokrit_max_veringert;
 	private float Haematokrit_min_erhoeht;
@@ -55,12 +55,12 @@ public class Blutbild {
 	private float MCV_max_erhoeht;
 
 	public boolean inHaemoglobinkonzentrationNormal() {
-		return Haemoglobinkonzentration > Haemoglobinkonzentration_min
-				&& Haemoglobinkonzentration < Haemoglobinkonzentration_max;
+		return Haemoglobinkonzentration > Haemoglobinkonzentration_min_normal
+				&& Haemoglobinkonzentration < Haemoglobinkonzentration_max_normal;
 	}
 
 	public boolean inHaemoglobinkonzentrationVerringert() {
-		return Haemoglobinkonzentration > Haemoglobinkonzentration_min
+		return Haemoglobinkonzentration > Haemoglobinkonzentration_min_normal
 				&& Haemoglobinkonzentration < Haemoglobinkonzentration_max_veringert;
 	}
 
@@ -70,7 +70,7 @@ public class Blutbild {
 	}
 
 	public String getHaemoglobinkonzentrationNormalBereich() {
-		return Haemoglobinkonzentration_min + " - " + Haemoglobinkonzentration_max;
+		return Haemoglobinkonzentration_min_normal + " - " + Haemoglobinkonzentration_max_normal;
 	}
 
 	public String getHaemoglobinkonzentrationVeringertBereich() {
@@ -130,7 +130,7 @@ public class Blutbild {
 	}
 
 	public boolean inHaematokritNormal() {
-		return Haematokrit > Haematokrit_min && Haematokrit < Haematokrit_max;
+		return Haematokrit > Haematokrit_min_normal && Haematokrit < Haematokrit_max_normal;
 	}
 
 	public boolean inHaematokritVerringert() {
@@ -142,7 +142,7 @@ public class Blutbild {
 	}
 
 	public String getHaematokritNormalBereich() {
-		return Haematokrit_min + " - " + Haematokrit_max;
+		return Haematokrit_min_normal + " - " + Haematokrit_max_normal;
 	}
 
 	public String getHaematokritVeringertBereich() {
