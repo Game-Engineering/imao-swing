@@ -462,6 +462,7 @@ public class Medizin extends JPanel {
 		btnBZuruek.setForeground(Color.WHITE);
 		btnBZuruek.setBorder(new LineBorder(Color.GRAY, 2, true));
 		btnBZuruek.setBackground(Color.DARK_GRAY);
+		lblUltraschall.setForeground(Color.WHITE);
 
 		lblUltraschall.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUltraschall.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));
@@ -522,6 +523,7 @@ public class Medizin extends JPanel {
 		btnDiagnose9.setForeground(Color.WHITE);
 		btnDiagnose9.setBorder(new LineBorder(Color.GRAY, 2, true));
 		btnDiagnose9.setBackground(Color.DARK_GRAY);
+		lblRntgen.setForeground(Color.WHITE);
 
 		lblRntgen.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRntgen.setFont(new Font("Tahoma", Font.PLAIN, FONT_SIZE));

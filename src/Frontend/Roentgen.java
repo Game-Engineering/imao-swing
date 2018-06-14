@@ -3,9 +3,9 @@ package Frontend;
 public class Roentgen {
 	private String name;
 	private int budget;
-	private int roentgenID;
+	private int RoentgenID;
 
 	public int getRoentgenID() {
-		return roentgenID;
+		return RoentgenID;
 	}
 }
